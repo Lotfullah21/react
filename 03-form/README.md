@@ -49,7 +49,6 @@ const ControlledForm = () => {
     setValue(newVal);
     console.log(newVal);
   };
-
   return (
     <form>
       <label>Click</label>
@@ -58,7 +57,6 @@ const ControlledForm = () => {
     </form>
   );
 };
-
 export default ControlledForm;
 ```
 
