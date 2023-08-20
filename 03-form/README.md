@@ -20,7 +20,7 @@ in React it’s convenient to have a JavaScript function that handles the submis
 
 ### Controlled Components
 
-In HTML, form elements such as <input>, <textarea>, and <select> typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().
+In HTML, form elements such as '<input>', '<textarea>', and '<select>' typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().
 it offers a declarative application programming interface (API) which gives the full access to control the component.
 Here, the form data is controlled by component's state
 we control the input via state values.
