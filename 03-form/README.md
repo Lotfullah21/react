@@ -43,7 +43,6 @@ Every time you type a new character, the handleChange function is executed. It r
 ```js
 const ControlledForm = () => {
   const [value, setValue] = useState("");
-
   const handleChange = (e) => {
     const newVal = e.target.value;
     setValue(newVal);
@@ -69,7 +68,6 @@ DOM handles form data unlike controlled one which component's state handle the d
 ```js
 const Form = () => {
   const inputRef = useRef(null);
-
   const handleSubmit = () => {
     const inputValue = inputRef.current.value;
     // Do something with the value
@@ -127,7 +125,6 @@ const Form = () => {
 
 ```js
 import { useState } from "react";
-
 const Form = () => {
   const [text, setText] = useState("");
   const handleSubmit = (e) => {
@@ -135,7 +132,6 @@ const Form = () => {
     setText("");
     console.log("Form Submitted.");
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
