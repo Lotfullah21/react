@@ -8,7 +8,7 @@ props are component configuration.
 
 ## State
 
-states are manages within the component.
+states are manages within the component, we can have more control using states.
 it allows react to determine when to re-render a component.
 any change in state value will trigger a re-render of given component.
 state is private and a component manages it's state internally
