@@ -1,88 +1,50 @@
-### Parent-Child relation
+## React Hook
 
-- React app consist of many components,which they are organized in a tree structure.
-- the component that is used inside another component is known as child component, and the parent component is the one that child component lives in
-- we can pass data only from parent to child only, so the direction is uni-directional relationship.
-- the data we are passing from parent to child is known props, and that is immutable, which means we cannot change it inside child component
-- there is two main reasons why this relationship is one-way
-  - comprehend the logic of React apps more quickly and
-  - simplify the data flow.
+Hooks are a set of functions that allow us to add state and other React features to functional components without using class components.
+they starts with 'use' keyword
+must be used inside the component
+component must be in upper case
+do not use hooks inside a conditional statement.
+set expressions, do not call them immediately.
+useEffect:
+Used for handling side effects in functional components, such as data fetching, subscriptions, or DOM manipulation. It's similar to componentDidMount, componentDidUpdate, and componentWillUnmount lifecycle methods in class components
+useContext:
+Allows you to consume context values within a functional component. Context provides a way to share data without passing props through every level of the component tree.
+useState:Allows functional components to manage state. It returns the current state value and a function to update that state
 
-```js
-import Footer from "./Footer";
-import Pages from "./Pages";
-const Home = () => {
-  return (
-    <>
-      <Footer year={2023} app="facebook,youtube"></Footer>
-      <Pages links="home,courses"></Pages>
-    </>
-  );
-};
-export default Home;
-```
+## Use State
 
-we can see, Home is the parent component
+it is a function that is provided by react,it returns an array with two elements, an initial value or current state value and a function to update the state value.
+In React, the useState hook is used to manage state within functional components. It allows you to add stateful behavior to your components without the need to convert them into class components. Here's how you can use the useState hook:
+In your functional component, declare state variables using the useState hook. The hook returns an array with two elements: the current state value and a function to update that value.
 
-```js
-const Footer = (props) => {
-  return (
-    <h4>
-      {props.year} {props.app}
-    </h4>
-  );
-};
-export default Footer;
-```
+### Initial Render
 
-and year is a property that had been defined inside Home component.
+initial render happens when the Component Tree is rendered to the DOM. Initial rendering happens when the application is loaded for the first time.
+this is also known as Mounting
 
-All the data inside react can be divided into two types
+### Re-Render
 
-- Props Data: data outside a component which the component cannot mutate it is an object (belongs to parent).
-- State Data: data inside a component which the component can mutate(belongs to component).
+it happens when any change is occured in the application,for this to be rendered in the application,instead of manipulating the whole DOM, a Virtual DOM is created by React, and only the parts changed will be changed in the actual DOM tree.
 
-## HOOKS
+when there is changes in state or props, React will re-render the component to reflect the changes.
+or if there is any change in the parent element.
 
-hooks are functions that let us hook into React state
+- whenever we change the stateValue,we trigger the render event and we can observe the latest changes in the browser
+- useState allows to change the value
 
-- You can only call hooks at the top level of your component or your own hooks.
+## Use State Array
 
-- You cannot call hooks inside loops or conditions.
+### Filter method
 
-- You can only call hooks from React functions, and not regular JavaScript functions.
+The filter() method takes a callback function as its argument.
+The callback function is executed for each element in the array.
+If the callback function returns true for a given element, that element is included in the filtered array. If it returns false, the element is excluded.
+The filtered elements are collected into a new array.
 
-## STATE:
+### Batching
 
-- it is component's internal data, that helps to change the behavior of that component.
-- it is a way to deal with data that is likely to change in the application.
-- parent component can pass it's state to the child.
-- The props object represents data that is external to a component, and state represents data that is internal to a component.
-- components can be stateful or stateless
+when we are using multiple states and update their values at the same, if we re-render every time we change the state, their would multiple of that rendering which is un-efficient.
+we use the concept of batching where we group multiple state update and render it once.
 
-stateful
-
-```js
-import { useState } from "react";
-
-const Pages = (props) => {
-  const [text, setText] = useState("Hello");
-  return (
-    <div>
-      {props.links} {text}
-    </div>
-  );
-};
-export default Pages;
-```
-
-stateless
-
-```js
-const Pages = (props) => {
-  return <div>{props.links}</div>;
-};
-export default Pages;
-```
-
-### Managing State.
+<!-- three specific thoughts -->
