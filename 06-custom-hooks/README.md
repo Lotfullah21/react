@@ -37,6 +37,8 @@ Within your custom hook function, you can use existing React hooks like useState
 Return Values:
 The custom hook should return any values, state, or functions that are needed by the components using the hook.
 
+
+
 ```js
 import { useState } from "react";
 
@@ -66,6 +68,8 @@ function CounterComponent() {
   );
 }
 ```
+
+##### Remember to use if(!data) or if(loading) befor destructuring the data, as it is an asynchronous opearation, instantly we do not hava access to the data and we would get the error of null.
 
 ```js
 import { useState, useEffect } from "react";
