@@ -3,12 +3,15 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import MyContextProvider from "./components/Contexts";
+import UseContext from "./components/MessageContext";
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <Navbar></Navbar>
+      <MyContextProvider>
+        <UseContext></UseContext>
+        <Navbar></Navbar>
+      </MyContextProvider>
     </>
   );
 }
