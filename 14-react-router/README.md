@@ -159,3 +159,161 @@ useEffect(() => {
   fetchingData();
 }, []);
 ```
+
+using `useEffect` hook, we need to first fetch data and then render to the page.
+
+##### rendering
+
+In the context of web development and user interfaces, rendering refers to the process of generating and displaying the visual representation of a component or a page on the user's screen. It involves converting the structured data and layout instructions of a web page or application into a format that can be presented to the user, typically as a combination of HTML, CSS, and sometimes JavaScript.
+
+```js
+import CocktailCard from "./CocktailCard";
+
+const Cocktails = ({ drinks }) => {
+  return (
+    <div>
+      {drinks.map((drink) => {
+        const { idDrink } = drink;
+        console.log(idDrink);
+        return <CocktailCard key={idDrink} {...drink}></CocktailCard>;
+      })}
+    </div>
+  );
+};
+export default Cocktails;
+```
+
+```js
+const CocktailCard = ({
+  strDrink,
+  strCategory,
+  strImageSource,
+  strInstructions,
+  strAlcoholic,
+}) => {
+  return (
+    <div className="cocktail-card">
+      <h2>{strDrink}</h2>
+      <p>Category: {strCategory}</p>
+    </div>
+  );
+};
+
+export default CocktailCard;
+```
+
+or
+
+```js
+const CocktailCard = (props) => {
+  const {
+    strDrink,
+    strCategory,
+    strImageSource,
+    strInstructions,
+    strAlcoholic,
+  } = props;
+
+  return (
+    <div className="cocktail-card">
+      <h2>{strDrink}</h2>
+      <p>Category: {strCategory}</p>
+    </div>
+  );
+};
+```
+
+## Note
+
+when you are destructuring the property, to use them in child component, you can use the properties in two ways,
+either pass the entire object and use dot notation or destructure them right away.
+2nd way is to destructure the properties in component parameters.
+
+`const CocktailCard = ({
+  strDrink,
+  strCategory,
+  strImageSource,
+  strInstructions,
+  strAlcoholic,
+}) `
+
+`{...drink}` we used pass all of the drinks properties to the `<CocktailCard>` instead of passing them individually.
+
+if we did not use `{...drink}` we had to do this
+
+```js
+return (
+  <CocktailCard
+    key={idDrink}
+    strDrink={strDrink}
+    strCategory={strCategory}
+    strImageSource={strImageSource}
+    strInstructions={strInstructions}
+    strAlcoholic={strAlcoholic}
+  ></CocktailCard>
+);
+```
+
+or if
+
+```js
+return <CocktailCard key={idDrink} drink={drink}></CocktailCard>;
+```
+
+then
+
+```js
+import React from "react";
+
+const CocktailCard = ({ dirnk }) => {
+  // Destructure the properties of the dirnk prop
+  const {
+    strDrink,
+    strCategory,
+    strImageSource,
+    strInstructions,
+    strAlcoholic,
+  } = dirnk;
+
+  return (
+    <div className="cocktail-card">
+      <h2>{strDrink}</h2>
+      <p>Category: {strCategory}</p>
+    </div>
+  );
+};
+export default CocktailCard;
+```
+
+### **useNavigation**
+
+```js
+import { Outlet, useNavigation } from "react-router-dom";
+const navigation = useNavigation();
+```
+
+it provides useful information about the state of our application.
+"state" generally refers to the current condition or status of a component or application.
+`Idle`: The application is not actively processing or waiting for anything. It's typically in a standby state.
+
+`Loading`: The application is actively fetching data or performing an operation. It's waiting for data or resources to become available.
+
+`Error`: An error or exception has occurred, and the application is in an error state. This state might include error messages or UI elements to handle errors.
+
+`Success`: The application has successfully completed a task or operation. This state might indicate that data has been retrieved successfully or an action has been completed without errors.
+
+`Active`: The application is actively engaged in user interactions or performing some task.
+
+### Object.keys()
+
+Object.keys() is a built-in JavaScript method that allows you to extract the keys (property names) of an object and return them as an array.
+
+```js
+const keysArray = Object.keys(object);
+const person = {
+  name: "Ahmad",
+  age: 30,
+};
+const keys = Object.keys(person);
+console.log(keys); // ahmad, 30
+```

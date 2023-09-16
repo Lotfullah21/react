@@ -11,10 +11,11 @@ const NavarWrapper = styled.nav`
     padding: 1.2rem 1rem;
   }
   .logo {
-    font-size: clamp(1rem, 2.5vw, 2rem);
-    color: rgb(24, 230, 237);
+    font-size: clamp(2rem, 2.5vw, 3rem);
+    color: rgb(231, 3, 3);
     font-weight: 600;
     letter-spacing: 1.1px;
+    text-decoration: none;
   }
 
   .nav-links {

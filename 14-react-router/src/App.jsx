@@ -2,7 +2,17 @@ import { useState } from "react";
 import "./App.css";
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { About, Cocktail, Contact, Error, HomeLayOut, Landing } from "./pages";
+import {
+  About,
+  Cocktail,
+  Contact,
+  Error,
+  HomeLayOut,
+  Landing,
+  SinglePageError,
+} from "./pages";
+import { loader as dataLoader } from "./pages/Landing";
+import { loader as SingleCocktailLoader } from "./pages/Cocktail";
 const customRouter = createBrowserRouter([
   {
     path: "/",
@@ -12,22 +22,24 @@ const customRouter = createBrowserRouter([
       {
         index: true,
         element: <Landing></Landing>,
+        loader: dataLoader,
+        errorElement: <SinglePageError></SinglePageError>,
       },
       {
-        path: "cocktail",
+        path: "cocktail/:id",
         element: <Cocktail></Cocktail>,
+        loader: SingleCocktailLoader,
+        errorElement: <SinglePageError></SinglePageError>,
       },
       {
         path: "about",
         element: <About></About>,
+        errorElement: <SinglePageError></SinglePageError>,
       },
       {
         path: "contact",
         element: <Contact></Contact>,
-      },
-      {
-        path: "error",
-        element: <Error></Error>,
+        errorElement: <SinglePageError></SinglePageError>,
       },
     ],
   },

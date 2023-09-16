@@ -6,9 +6,9 @@ const Navbar = () => {
   return (
     <NavarWrapper>
       <div className="nav-center">
-        <span className="logo" style={{ fontSize: "2rem" }}>
-          Cocktail
-        </span>
+        <NavLink className="logo" to="/">
+          <span className="logo">Cocktail</span>
+        </NavLink>
 
         <div className="nav-links">
           <NavLink to="/" className="nav-link">
