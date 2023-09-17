@@ -25,9 +25,15 @@ const NewsLetter = () => {
 
   return (
     <Form className="form" method="POST">
-      NewsLetter
-      <h4>our newsletter</h4>
-      {/* name */}
+      <h4
+        style={{
+          textTransform: "capitalize",
+          marginBottom: "1rem",
+          textAlign: "center",
+        }}
+      >
+        our newsletter
+      </h4>
       <div className="form-row">
         <label htmlFor="name" className="form-label">
           Name

@@ -3,8 +3,11 @@ import CocktailsStyled from "../wrappers/Cocktails";
 
 const Cocktails = ({ drinks }) => {
   if (!drinks) {
-    // Handle the case where drinks is undefined or empty
-    return null;
+    return (
+      <div className="not-found">
+        <h2>your drink does not match our drinks</h2>
+      </div>
+    );
   }
 
   return (

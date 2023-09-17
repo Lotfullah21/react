@@ -7,9 +7,7 @@ const HomeLayOut = () => {
     <>
       <Navbar></Navbar>
       <section className="page">
-        {isLoading ? <div className="loading">Loading</div> : <Outlet></Outlet>}
-
-        <footer>footer</footer>
+        {isLoading ? <div className="loading"></div> : <Outlet></Outlet>}
       </section>
     </>
   );

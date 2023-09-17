@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const SearchBarStyle = styled.div`
   margin-bottom: 1.7rem;
-  background: white;
 
   .form {
     display: grid;

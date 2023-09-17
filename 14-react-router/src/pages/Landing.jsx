@@ -9,7 +9,7 @@ const cocktailsURL =
 // get the data using searchCocktailQuery.
 const searchCocktailQuery = (searchTerm) => {
   return {
-    queryKey: ["search", searchTerm || "all"],
+    queryKey: ["search", "" || searchTerm],
     queryFn: async () => {
       const response = await axios.get(`${cocktailsURL}${searchTerm}`);
       return response.data.drinks;
@@ -24,7 +24,7 @@ export const loader =
     // construct a new url from the request url
     const newURL = new URL(request.url);
     // from the url, retrieve the "search" key parameter
-    const searchTerm = newURL.searchParams.get("search") || "";
+    const searchTerm = newURL.searchParams.get("search") || "coffee";
     // check if we have the data in the catch, if there, do not refetch again, directly give, else refetch again from the loader
     await queryCLient.ensureQueryData(searchCocktailQuery(searchTerm));
     return { searchTerm };

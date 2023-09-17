@@ -1,5 +1,3 @@
-/* ============= GLOBAL CSS =============== */
-
 *,
 ::after,
 ::before {
@@ -65,90 +63,15 @@ html {
 }
 
 body {
-  background: var(--backgroundColor);
+  background: rgb(226, 226, 226);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   line-height: 1;
   color: var(--textColor);
 }
-p {
-  margin: 0;
-}
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 0;
-  font-family: var(--headingFont);
-  font-weight: 400;
-  line-height: 1;
-  text-transform: capitalize;
-  letter-spacing: var(--letterSpacing);
-}
 
-h1 {
-  font-size: clamp(2rem, 5vw, 5rem); /* Large heading */
-}
-
-h2 {
-  font-size: clamp(1.5rem, 3vw, 3rem); /* Medium heading */
-}
-
-h3 {
-  font-size: clamp(1.25rem, 2.5vw, 2.5rem); /* Small heading */
-}
-
-h4 {
-  font-size: clamp(1rem, 2vw, 2rem); /* Extra small heading */
-}
-
-h5 {
-  font-size: clamp(0.875rem, 1.5vw, 1.5rem); /* Tiny heading */
-}
-
-/* BIGGER FONTS */
-/* h1 {
-  font-size: clamp(3rem, 6vw, 6rem);
-}
-
-h2 {
-  font-size: clamp(2.5rem, 5vw, 5rem);
-}
-
-h3 {
-  font-size: clamp(2rem, 4vw, 4rem);
-}
-
-h4 {
-  font-size: clamp(1.5rem, 3vw, 3rem);
-}
-
-h5 {
-  font-size: clamp(1rem, 2vw, 2rem);
-}
- */
-
-.text {
-  margin-bottom: 1.5rem;
-  max-width: 40em;
-}
-
-small,
-.text-small {
-  font-size: var(--small-text);
-}
-
-a {
-  text-decoration: none;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.img {
+img {
   width: 100%;
   display: block;
   object-fit: cover;
@@ -158,7 +81,7 @@ ul {
 .btn {
   cursor: pointer;
   color: var(--white);
-  background: var(--primary-500);
+  background: red;
   border: transparent;
   border-radius: var(--borderRadius);
   letter-spacing: var(--letterSpacing);
@@ -167,21 +90,6 @@ ul {
   transition: var(--transition);
   text-transform: capitalize;
   display: inline-block;
-}
-.btn:hover {
-  background: var(--primary-700);
-  box-shadow: var(--shadow-3);
-}
-.btn-hipster {
-  color: var(--primary-500);
-  background: var(--primary-200);
-}
-.btn-hipster:hover {
-  color: var(--primary-200);
-  background: var(--primary-700);
-}
-.btn-block {
-  width: 100%;
 }
 
 /* alerts */
@@ -209,7 +117,7 @@ ul {
   border-radius: var(--borderRadius);
   box-shadow: var(--shadow-2);
   padding: 2rem 2.5rem;
-  margin: 3rem auto;
+  margin: 0.1rem auto;
 }
 .form-label {
   display: block;
@@ -231,9 +139,6 @@ ul {
   margin-bottom: 1rem;
 }
 
-.form-textarea {
-  height: 7rem;
-}
 ::placeholder {
   font-family: inherit;
   color: var(--grey-400);
@@ -252,36 +157,28 @@ ul {
 }
 
 .loading {
-  width: 6rem;
-  height: 6rem;
-  border: 5px solid var(--grey-400);
-  border-radius: 50%;
-  border-top-color: var(--primary-500);
-  animation: spinner 0.6s linear infinite;
-}
-
-/* title */
-
-.title {
-  text-align: center;
-}
-
-.title-underline {
-  background: var(--primary-500);
   width: 4rem;
-  height: 0.25rem;
-  margin: 0 auto;
-  margin-top: 1rem;
+  height: 4rem;
+  border: 5px solid grey;
+  border-radius: 50%;
+  border-top-color: rgb(0, 136, 255);
+  animation: spinner 0.7s linear infinite;
+  margin: 5rem auto;
 }
 
-/* 
-============= 
-PROJECT CSS
-=============
-*/
 .page {
   width: var(--view-width);
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 2rem 2rem;
+}
+
+.not-found {
+  text-align: center;
+  margin-top: 3rem;
+  letter-spacing: 2px;
+  color: rgb(55, 51, 51);
+  text-transform: capitalize;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
