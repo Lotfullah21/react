@@ -20,6 +20,9 @@ const Navbar = () => {
           <NavLink to="/about" className="nav-link">
             About
           </NavLink>
+          <NavLink to="/newsLetter" className="nav-link">
+            News-Letter
+          </NavLink>
         </div>
       </div>
     </NavarWrapper>

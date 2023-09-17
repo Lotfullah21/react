@@ -317,3 +317,240 @@ const person = {
 const keys = Object.keys(person);
 console.log(keys); // ahmad, 30
 ```
+
+```js
+const NewsLetter = () => {
+  return (
+    <form className="form" action="POST">
+      NewsLetter
+      <h4>our newsletter</h4>
+      {/* name */}
+      <div className="form-row">
+        <label htmlFor="name" className="form-label">
+          Name
+        </label>
+        <input
+          type="text"
+          name="name"
+          className="form-input"
+          id="name"
+          defaultValue="ahmad"
+        ></input>
+      </div>
+      {/* name */}
+      <div className="form-row">
+        <label htmlFor="name" className="form-label">
+          Name
+        </label>
+        <input
+          type="text"
+          name="name"
+          className="form-input"
+          id="name"
+          defaultValue="ahmad"
+        ></input>
+      </div>
+      {/*  last name */}
+      <div className="form-row">
+        <label htmlFor="email" className="form-label">
+          email
+        </label>
+        <input
+          type="text"
+          name="email"
+          className="form-input"
+          id="email"
+          defaultValue="x@x.com"
+        ></input>
+      </div>
+      <button className="btn btn-submit">Submit</button>
+    </form>
+  );
+};
+export default NewsLetter;
+```
+
+## formData()
+
+It is actually a built-in JavaScript object that is used to create and manage HTML form data in a format that can be easily sent to a server via HTTP requests, typically in the context of sending POST requests.
+
+Object.fromEntries is a JavaScript method introduced in ECMAScript 2019 (ES10) that allows you to convert an iterable (like an array of key-value pairs) into an object.
+
+`disabled`: The disabled attribute is a standard HTML attribute used with form input elements, such as text fields, buttons, checkboxes, and others. Its role is to disable user interaction with the input element when its value is set to true, and enable interaction when set to false or not present. In this case, the disabled attribute is conditionally set based on the value of the isSubmitting variable.
+
+our landing page without react-query
+
+```js
+import { useLoaderData } from "react-router-dom";
+import SearchBar from "../components/SearchBar";
+import Cocktails from "../components/Cocktails";
+import axios from "axios";
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+export const loader = async ({ request }) => {
+  // construct a new url from the request url
+  const newURL = new URL(request.url);
+  // from the url, retrieve the "search" key parameter
+  const searchTerm = newURL.searchParams.get("search") || "coffee";
+  // add the search one to our request
+  const response = await axios.get(`${url}${searchTerm}`);
+  const drinks = response.data.drinks;
+  return { drinks, searchTerm };
+};
+const Landing = () => {
+  const { drinks, searchTerm } = useLoaderData();
+  return (
+    <>
+      <SearchBar searchTerm={searchTerm}></SearchBar>
+      <Cocktails drinks={drinks}></Cocktails>
+    </>
+  );
+};
+
+export default Landing;
+```
+
+## Crucial
+
+drinks is undefined helped you resolve the issue. Data fetching in asynchronous applications can sometimes lead to situations where data is not available instantly, and adding conditional checks like the one you implemented is a good practice to ensure your components handle such scenarios gracefully.
+
+important to have the bellow snippet condition as our operation is asynchronous, especially using `useQuery`
+
+```js
+
+const Cocktails = ({ drinks }) => {
+  if (!drinks) {
+    // Handle the case where drinks is undefined or empty
+    return null;
+  }
+```
+
+```js
+import CocktailCard from "./CocktailCard";
+import CocktailsStyled from "../wrappers/Cocktails";
+
+const Cocktails = ({ drinks }) => {
+  if (!drinks) {
+    // Handle the case where drinks is undefined or empty
+    return null;
+  }
+
+  return (
+    <CocktailsStyled>
+      {drinks.map((drink) => {
+        const { idDrink: id } = drink;
+
+        return <CocktailCard key={id} {...drink}></CocktailCard>;
+      })}
+    </CocktailsStyled>
+  );
+};
+export default Cocktails;
+```
+
+`
+
+import { Link, useLoaderData, Navigate } from "react-router-dom";
+import CocktailSinglePage from "../wrappers/CocktailSinglePage";
+import axios from "axios";
+import { useQuery } from "react-query";
+const url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
+
+// get the data using query
+const singleCocktailQueryData = (id) => {
+return {
+queryKey: ["cocktail", id],
+queryFn: async () => {
+const { data } = await axios.get(`${url}${id}`);
+return data;
+},
+};
+};
+
+// get the id and check if the data is in cache.
+export const loader =
+(queryClient) =>
+async ({ params }) => {
+const { id } = params;
+// check if data is already in cache, if so, do not re-fetch again, else fetch the data.
+// await queryClient.ensureQueryData(singleCocktailQueryData(id));
+return { id };
+};
+
+const Cocktail = () => {
+const { id } = useLoaderData();
+const { data } = useQuery(singleCocktailQueryData(id));
+
+const singleDrink = data.drinks[0];
+const {
+strDrink: name,
+strDrinkThumb: img,
+strAlcoholic: alcoholicInfo,
+strCategory: category,
+strInstructions: guides,
+} = singleDrink;
+
+const singleDrinkKeys = Object.keys(singleDrink);
+const singleDrinkIngredients = singleDrinkKeys.filter(
+// check for the keys that starts with "strIngredient" and the key value should not be null.
+(key) => key.startsWith("strIngredient") && singleDrink[key] !== null
+);
+const singleDrinkIngredientsValues = singleDrinkIngredients.map(
+(key) => singleDrink[key]
+);
+
+return (
+<CocktailSinglePage>
+<header>
+<Link to="/" className="btn">
+Back home
+</Link>
+<h1 style={{ fontSize: "1.4rem" }}>{name}</h1>
+</header>
+<div className="drink-card">
+<img src={img} alt={name} tabIndex="-1"></img>
+<div className="drink-info">
+<p>
+{" "}
+<span className="drink-data">name</span>
+<span className="comma">:</span>
+{name}
+</p>
+<p>
+{" "}
+<span className="drink-data">category</span>
+<span className="comma">:</span>
+{category}
+</p>
+<p>
+{" "}
+<span className="drink-data">alcoholicInfo</span>
+<span className="comma">:</span>
+{alcoholicInfo}
+</p>
+<p>
+<span className="drink-data">Ingredients</span>
+<span className="comma">:</span>
+{singleDrinkIngredientsValues.map((item, index) => (
+<span key={item}>
+<span>
+{item}
+{index < singleDrinkIngredients.length - 1 ? "," : ""}
+</span>
+</span>
+))}
+</p>
+<p>
+{" "}
+<span className="drink-data">guides</span>
+<span className="comma">:</span>
+{guides}
+</p>
+</div>
+</div>
+</CocktailSinglePage>
+);
+};
+
+export default Cocktail;
+
+`

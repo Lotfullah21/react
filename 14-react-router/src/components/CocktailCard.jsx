@@ -12,7 +12,7 @@ const CocktailCard = (props) => {
 
   return (
     <CocktailCardWrapper className="cocktail-card">
-      <div className="img-container">
+      <div className="img-container" tabIndex="-1">
         <img src={url} alt={name}></img>
       </div>
       <div className="footer">

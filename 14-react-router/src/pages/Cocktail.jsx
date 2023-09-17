@@ -1,18 +1,34 @@
 import { Link, useLoaderData, Navigate } from "react-router-dom";
 import CocktailSinglePage from "../wrappers/CocktailSinglePage";
 import axios from "axios";
-
+import { useQuery } from "@tanstack/react-query";
 const url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
-export const loader = async ({ params }) => {
-  const { id } = params;
-  const { data } = await axios.get(`${url}${id}`);
-  return { data, id };
+// get the data using query
+const singleCocktailQueryData = (id) => {
+  return {
+    queryKey: ["cocktail", id],
+    queryFn: async () => {
+      const { data } = await axios.get(`${url}${id}`);
+      return data;
+    },
+  };
 };
 
+// get the id and check if the data is in cache.
+export const loader =
+  (queryClient) =>
+  async ({ params }) => {
+    const { id } = params;
+    // check if data is already in cache, if so, do not re-fetch again, else fetch the data.
+    await queryClient.ensureQueryData(singleCocktailQueryData(id));
+    return { id };
+  };
+
 const Cocktail = () => {
-  const { data } = useLoaderData();
-  if (!data) return <Navigate to="/"></Navigate>;
+  const { id } = useLoaderData();
+  const { data } = useQuery(singleCocktailQueryData(id));
+  if (!data) return <Navigate to="/" />;
   const singleDrink = data.drinks[0];
   const {
     strDrink: name,
@@ -30,7 +46,6 @@ const Cocktail = () => {
   const singleDrinkIngredientsValues = singleDrinkIngredients.map(
     (key) => singleDrink[key]
   );
-  console.log(singleDrinkIngredients);
 
   return (
     <CocktailSinglePage>
@@ -38,9 +53,10 @@ const Cocktail = () => {
         <Link to="/" className="btn">
           Back home
         </Link>
+        <h1 style={{ fontSize: "1.4rem" }}>{name}</h1>
       </header>
       <div className="drink-card">
-        <img src={img} alt={name}></img>
+        <img src={img} alt={name} tabIndex="-1"></img>
         <div className="drink-info">
           <p>
             {" "}
