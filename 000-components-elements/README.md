@@ -33,7 +33,7 @@ each node in the tree is just a plain javascript object.
 ## Children Prop:
 
 In JSX expressions, the content between an opening and closing tag is passed as a unique prop called children.
-'<h1>Hello</h1>', 'Hello' is a children, a simple string.
+'<h1>Hello</h1>', 'Hello' is a children, a simple string.</h1>
 
 we can provide JSX elements as children to display the nested component.
 
