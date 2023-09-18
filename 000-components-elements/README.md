@@ -80,7 +80,7 @@ function App() {
 
 Both props.children and {children} serve the same purpose of accessing and rendering the content passed as children to a component. The choice of whether to use one or the other is a matter of coding style and preference. Using {children} with destructuring is often favored for its brevity and clarity, but the functionality is the same as using props.children.
 
-In this example, the Card component takes advantage of the children prop to render whatever content is placed within its tags when used in the App component. In this case, the content between the <Card> and </Card> tags (the <h2> and <p> elements) is passed as props.children to the Card component, and it gets rendered within the <div className="card"> element.
+In this example, the Card component takes advantage of the children prop to render whatever content is placed within its tags when used in the App component. In this case, the content between the <Card> and </Card> tags (the <h2></h2> and <p> elements) is passed as props.children to the Card component, and it gets rendered within the <div className="card"> element.
 
 This feature is particularly useful when you want to create reusable components that can wrap and display arbitrary content. Components like modals, tooltips, and custom layout components often utilize the children prop to allow customization of their inner content while maintaining a consistent outer structure.
 
