@@ -44,7 +44,7 @@ we can provide JSX elements as children to display the nested component.
 
 In React, the children prop is a special prop that is automatically passed to a component and represents the content that is placed between the opening and closing tags of that component in JSX. It allows you to render and manipulate the content that is nested within a component.
 
-```JS
+```js
 
 
 function Card(props) {
