@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 360px;
+  height: 14rem;
+  width: 100%;
+}
+.cart {
+  width: 90vw;
+  max-width: 712px;
+  border: 2px solid red;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.cart-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr 50px;
+  border: 2px solid rgb(77, 255, 0);
+  justify-items: center;
+}
+
+.modal {
+  background: rgba(231, 231, 231, 0.69);
+  width: 320px;
+  margin: 0 auto;
+  border: 2px slateblue solid;
+  padding: 5rem;
+  text-align: center;
+}
+
+.btn {
+  background: rgb(28, 28, 28);
+  color: rgb(17, 255, 0);
+  padding: 0.4rem 0.9rem;
+  border: transparent;
+  border-radius: 3px;
+  margin-left: 1.1rem;
+  margin-top: 2rem;
+  cursor: pointer;
+}
