@@ -31,12 +31,14 @@ It provides a set of utilities and abstractions to reduce the amount of boilerpl
 ```js
 npm create vite@latest project-name --template react
 cd project-name
-npm install redux react-redux react-icons @reduxjs/toolkit
+npm install redux react-redux  @reduxjs/toolkit
 npm install
 npm run dev
 
 ```
-
+```js
+npm install react-icons
+```
 ## Create a Redux Store:
 
 a "store" is a core concept that represents the entire state tree of your application.
