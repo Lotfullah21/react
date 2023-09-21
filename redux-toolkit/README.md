@@ -29,15 +29,12 @@ Redux Toolkit is a library built on top of Redux that simplifies and streamlines
 It provides a set of utilities and abstractions to reduce the amount of boilerplate code typically associated with Redux, making it easier and more efficient to manage application state
 
 ```js
-npm install redux react-redux
-npm install react-icons
-
-npm create vite@latest project-name -- --template react
+npm create vite@latest project-name --template react
 cd project-name
+npm install redux react-redux react-icons @reduxjs/toolkit
 npm install
-
-npm install @reduxjs/toolkit react-redux
 npm run dev
+
 ```
 
 ## Create a Redux Store:
