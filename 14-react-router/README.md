@@ -122,6 +122,7 @@ error component will not be included in the styles we are setting for outlet, He
 ### Outlet
 
 The "outlet" itself is typically represented by a special component that acts as a placeholder for the content of child routes. This component is where the content for each route gets injected.
+share the UI present in the `HomeLayout` to every child of the `HomeLayout` which we have provided in `HomeLayout` children.
 for instance, we want the navbar and footer to be injected in every page, Hence outlet can be used here to inject these to component to every child of HomeLayOut which is the parent in the app component.
 
 ```js
