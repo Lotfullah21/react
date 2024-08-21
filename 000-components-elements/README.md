@@ -45,37 +45,26 @@ we can provide JSX elements as children to display the nested component.
 In React, the children prop is a special prop that is automatically passed to a component and represents the content that is placed between the opening and closing tags of that component in JSX. It allows you to render and manipulate the content that is nested within a component.
 
 ```js
-
-
 function Card(props) {
-  return (
-    <div className="card">
-      {props.children}
-    </div>
-  );
+	return <div className="card">{props.children}</div>;
 }
 
-OR
+OR;
 
-function Card({children}){
-    return (
-        <div className="card">
-            {children}
-        </div>
-    )
+function Card({ children }) {
+	return <div className="card">{children}</div>;
 }
 
 function App() {
-  return (
-    <div className="App">
-      <Card>
-        <h2>Hello, World!</h2>
-        <p>This is a card component with children.</p>
-      </Card>
-    </div>
-  );
+	return (
+		<div className="App">
+			<Card>
+				<h2>Hello, World!</h2>
+				<p>This is a card component with children.</p>
+			</Card>
+		</div>
+	);
 }
-
 ```
 
 Both props.children and {children} serve the same purpose of accessing and rendering the content passed as children to a component. The choice of whether to use one or the other is a matter of coding style and preference. Using {children} with destructuring is often favored for its brevity and clarity, but the functionality is the same as using props.children.
@@ -102,19 +91,19 @@ it is a component that lets us to wrap our element without adding extra node to 
 
 ```js
 return (
-  <React.Fragment>
-    <li>React</li>
-    <li>HTML</li> {" "}
-  </React.Fragment>
+	<React.Fragment>
+		<li>React</li>
+		<li>HTML</li> {" "}
+	</React.Fragment>
 );
 
 OR;
 
 return (
-  <>
-    <li>React</li>
-    <li>HTML</li> {" "}
-  </>
+	<>
+		<li>React</li>
+		<li>HTML</li> {" "}
+	</>
 );
 ```
 
