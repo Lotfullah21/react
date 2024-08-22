@@ -13,17 +13,16 @@ body {
 	width: 90vw;
 	max-width: 1192px;
 	margin: 0 auto;
-	border: 2px solid red;
 }
 
 .course {
-	padding: 2rem 1rem;
 	background: white;
 	margin-bottom: 1rem;
 	display: grid;
 	gap: 1rem;
 	justify-content: center;
 	justify-items: center;
+	position: relative;
 }
 
 .course img {
@@ -40,4 +39,15 @@ body {
 		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 		gap: 1.5rem;
 	}
+}
+
+.number {
+	position: absolute;
+	font-size: 1.24rem;
+	top: 0;
+	left: 0;
+	padding: 1rem;
+	background: red;
+	border-bottom-right-radius: 1rem;
+	color: whitesmoke;
 }
