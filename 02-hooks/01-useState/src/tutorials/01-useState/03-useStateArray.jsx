@@ -1,37 +1,45 @@
 import { useState } from "react";
 import { data } from "../data";
 
-const UseStateArray = () => {
-  const [colleges, setPeople] = useState(data);
+const Practice = () => {
+	const [colleges, setCollege] = useState(data);
 
-  const removeCollege = (rank) => {
-    let newCollege = colleges.filter((college) => college.rank !== rank);
-    setPeople(newCollege);
-  };
+	const handleClick = (rank) => {
+		// Whenever we click on a button, return a new list of items whose ranks are different than the one we just clicked.
+		const newCollege = colleges.filter((college) => {
+			if (college.rank !== rank) {
+				return true;
+			}
+		});
+		setCollege(newCollege);
+	};
 
-  return (
-    <div>
-      {colleges.map((eachItem) => {
-        const { rank, name } = eachItem;
-        return (
-          <div key={rank}>
-            <h3>{name}</h3>
-            <h4 style={{ color: "red", fontSize: "1.5rem" }}>#{rank}</h4>
-            <button onClick={() => removeCollege(rank)}>Remove</button>
-          </div>
-        );
-      })}
-      <div>
-        <button
-          style={{ marginTop: "2rem" }}
-          className="btn"
-          onClick={() => setPeople([])}
-        >
-          Clear Items
-        </button>
-      </div>
-    </div>
-  );
+	const handleClickAll = () => {
+		setCollege([]);
+	};
+
+	return (
+		<div>
+			{colleges.map((college) => {
+				const { name, rank } = college;
+				return (
+					<div key={rank}>
+						<h2>{name}</h2>
+						<h3>{rank}</h3>
+						<button className="btn" onClick={() => handleClick(rank)}>
+							clear
+						</button>
+					</div>
+				);
+			})}
+
+			<button
+				style={{ marginTop: "3rem" }}
+				className="btn"
+				onClick={handleClickAll}>
+				clear all
+			</button>
+		</div>
+	);
 };
-
-export default UseStateArray;
+export default Practice;
