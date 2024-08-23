@@ -69,3 +69,34 @@ It allows us to install external packages.
    When we try to create a component, easily we can write by using the given commands
    `rafce` (arrow func with export, the name will be same as the file name)
    `rfce` (regular func with export, the name will be same as the file name)
+
+## How to deploy an application
+
+Write the following commands to make our application deploy ready.
+
+1. "CTRL + c " to stop the server
+2. `npm run build`
+
+## Vite
+
+Vite is a build tool and development server for modern web projects, including those using React. It’s designed to provide a faster and more efficient development experience compared to traditional bundlers like Webpack.
+
+To create react app using vite, run the given command.
+
+```js
+ npm create vite@latest react-app -- --template react
+ cd react-app
+ npm install
+
+```
+
+## To start the development environment
+
+```script
+npm run dev
+```
+
+### Differences
+
+- One of the major difference is that all the files with `.js` extension will be converted to `.jsx` extension.
+- `index.html` sits in the root instead of the `public folder`.
