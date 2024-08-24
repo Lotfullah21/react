@@ -7,7 +7,7 @@ export const NavbarContext = createContext();
 export const useAppContext = () => {
 	return useContext(NavbarContext);
 };
-
+``;
 const Navbar = () => {
 	const [user, setUser] = useState("KING");
 	const logout = () => {
