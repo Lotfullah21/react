@@ -1,7 +1,3 @@
-## DOM
-
-- a tree like structure that represents HTML documents, it uses nodes to describe each part of the document
-
 # Form
 
 it is used to create interactive sections on a web page that allow users to input data and submit it to a server for processing.
@@ -362,3 +358,7 @@ The map() method of Array instances creates a new array populated with the resul
 
 - we can manipulate list objects using map method, it will take an array as input and will apply some transformation on each element.
 - the return list will be the same length as original array.
+
+## DOM
+
+A tree like structure that represents HTML documents, it uses nodes to describe each part of the document
