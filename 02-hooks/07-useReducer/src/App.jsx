@@ -1,20 +1,16 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import Counter from "./components/Reducer";
-import RemoveCollegeUseState from "./components/RemoveCollegeUseState";
-import RemoveCollege from "./components/RemoveCollege";
+import Counter from "./components/02-Reducer";
+import RemoveCollegeUseState from "./components/01-RemoveCollegeUseState";
+import RemoveCollegeUseReducer from "./components/02-RemoveCollegeReducer";
+import "./index.css";
 function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      {/* <Counter></Counter> */}
-      {/* <RemoveCollegeUseState></RemoveCollegeUseState> */}
-      <RemoveCollege></RemoveCollege>
-    </>
-  );
+	return (
+		<div className="container">
+			{/* <Counter></Counter> */}
+			{/* <RemoveCollegeUseState></RemoveCollegeUseState> */}
+			<RemoveCollegeUseReducer></RemoveCollegeUseReducer>
+			{/* <RemoveCollege></RemoveCollege> */}
+		</div>
+	);
 }
 
 export default App;
