@@ -210,26 +210,3 @@ we can pass at the end of either "&&" or "." an optional string a string, string
 const nameValue = y?.name || "y does not exist"; // y does not exist
 ```
 
-### GLobal Default Setup
-
-if we want some properties to be attached to each of our equest, we can set a global setup.
-after that for every request we do, automatically we get that.
-it has one downside and that is, the setup will be applied to all requests we are sending and we might do not want this for our requests.
-
-what to do ?
-
-define a custom axios, and call that on the requests you want have those specification.
-
-```js
-import axios from "axios";
-
-const AuthFetch = axios.create({
-	baseURL: "https://api.github.com",
-	headers: {
-		Accept: "application/json",
-	},
-});
-export default AuthFetch;
-```
-
-in the above snippet, only the calls we make using "AuthFetch" will have this header.
