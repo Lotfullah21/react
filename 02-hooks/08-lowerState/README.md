@@ -6,7 +6,7 @@ There are different methods to mitigate the issue.
 
 #### lower the state
 
-move all the parent logic to a different component, or in another word move the logic that cause unnecessary re-rendering.
+move all the parent logics to a different component, or in another word move the logic that cause unnecessary re-rendering.
 
 ```js
 import { useState } from "react";
