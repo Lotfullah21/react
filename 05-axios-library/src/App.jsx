@@ -1,29 +1,14 @@
-import { useState } from "react";
-
-import FirstRequest from "./components/FirstRequest";
-import DadJokeGet from "./components/DadJokeGet";
-import OptionalChaining from "./components/basics/OptionalChaining";
-import AndOperator from "./components/basics/AndOperator";
-import DadJokeAcceptHeader from "./components/DadJokeAcceptHeader";
-import PostJoke from "./components/basics/PostJoke";
+import FirstRequest from "./components/01-FirstRequest";
+import DadJokeAcceptHeader from "./components/03-DadJokeAcceptHeader";
+import PostJoke from "./components/04-PostJoke";
+import DefaultSetup from "./components/05-DefaultSetup";
 import "./axios/global";
-import RandomUser from "./components/RandomUser";
-import CustomAxios from "./components/CustomAxios";
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <>
-      {/* <OptionalChaining></OptionalChaining> */}
-      {/* <AndOperator></AndOperator> */}
-      {/* <FirstRequest></FirstRequest> */}
-      {/* <DadJokeGet></DadJokeGet> */}
-      {/* <DadJokeAcceptHeader></DadJokeAcceptHeader> */}
-      {/* <PostJoke></PostJoke> */}
-      {/* <RandomUser></RandomUser> */}
-      <CustomAxios></CustomAxios>
-    </>
-  );
-}
-
+import CustomAxios from "./components/06-CustomAxios";
+const App = () => {
+	return (
+		<main>
+			<CustomAxios></CustomAxios>
+		</main>
+	);
+};
 export default App;
