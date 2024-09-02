@@ -24,7 +24,7 @@ export const loader =
 		const searchKey = url.searchParams.get("search");
 		const searchTerm = searchKey || "coffee";
 		// Check if data is there, if so, give it. if not, invoke the searchQuery.
-		await queryClient.ensureQueryData(searchCocktailsQuery(searchTerm));
+		await queryClient.ensureQueryData(searchçocktailsQuery(searchTerm));
 		return { searchTerm };
 	};
 
