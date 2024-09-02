@@ -1,0 +1,276 @@
+/* 
+
+=============
+Variables
+=============
+
+*/
+
+:root {
+	/* primary red */
+	--clr-primary-1: rgb(64, 0, 0);
+	--clr-primary-2: rgb(79, 12, 12);
+	--clr-primary-3: rgb(111, 17, 17);
+	--clr-primary-4: rgb(142, 22, 22);
+	--clr-primary-5: rgb(174, 26, 26);
+	--clr-primary-6: rgb(206, 31, 31);
+	--clr-primary-7: rgb(224, 49, 49);
+	--clr-primary-8: rgb(229, 81, 81);
+	--clr-primary-9: rgb(233, 113, 113);
+	--clr-primary-10: rgb(243, 176, 176);
+
+	/* Darker shades */
+	--clr-secondary-1: rgb(1, 13, 18);
+	--clr-secondary-2: rgb(5, 57, 80);
+	--clr-secondary-3: rgb(1, 7, 9);
+	--clr-secondary-4: rgb(12, 144, 203);
+	/* Main color */
+	--clr-secondary-5: rgb(14, 170, 241);
+	/* Lighter shades */
+	--clr-secondary-6: rgb(68, 189, 244);
+	--clr-secondary-7: rgb(66, 188, 244);
+	--clr-secondary-8: rgb(100, 201, 246);
+	--clr-secondary-9: rgb(169, 225, 250);
+	--clr-secondary-10: rgb(238, 249, 254);
+
+	/* Dark grey used for headings */
+	--clr-grey-1: rgb(9, 9, 9);
+	--clr-grey-2: rgb(27, 27, 27);
+	--clr-grey-3: rgb(43, 43, 48);
+	--clr-grey-4: rgb(44, 44, 47);
+	/* Grey used for paragraphs */
+	--clr-grey-5: rgb(25, 27, 29);
+	--clr-grey-6: rgb(137, 137, 137);
+	--clr-grey-7: rgb(155, 155, 155);
+	--clr-grey-8: rgb(222, 228, 233);
+	--clr-grey-9: rgb(242, 242, 242);
+	--clr-grey-10: rgb(244, 246, 248);
+	--clr-white: #fff;
+	--clr-black: #000;
+	--transition: all ease-in-out 0.2s;
+	--spacing-wide: 0.07em;
+	--spacing-wider: 0.1em;
+	--spacing-per: 0.01em;
+	--border-radius: 7px;
+	--shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+	--shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+		0 4px 6px -4px rgb(0 0 0 / 0.1);
+	--shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+		0 8px 10px -6px rgb(0 0 0 / 0.1);
+	--shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+	--max-width-nav: 1492px;
+	--max-width: 1292px;
+	--view-width: 90vw;
+	--underline-primary: rgb(14, 170, 241);
+	--underline-secondary: rgb(224, 49, 49);
+	--dark-mode-bg-color: #000000;
+	--dark-mode-text-color: #fff;
+	--backgroundColor: var(--clr-grey-9);
+	--textColor: var(--clr-grey-2);
+	--dark-mode-transition: color 0.2s ease-in, background-color 0.3s ease-in;
+}
+
+/* 
+
+=============
+Global styles
+=============
+
+*/
+
+*,
+::after,
+::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--backgroundColor: var(--dark-mode-bg-color);
+		--textColor: var(--dark-mode-text-color);
+	}
+} */
+
+.dark-theme {
+	--backgroundColor: var(--dark-mode-bg-color);
+	--textColor: var(--dark-mode-text-color);
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background: var(--backgroundColor);
+	color: var(--textColor);
+	transition: var(--dark-mode-transition);
+	line-height: 1.4;
+	font-size: 0.795rem;
+	letter-spacing: var(--spacing-per);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	line-height: 1.25;
+	letter-spacing: var(--spacing);
+	margin-bottom: 0.75rem;
+}
+
+h1 {
+	font-size: 3rem;
+}
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+}
+h4 {
+	font-size: 0.875rem;
+}
+
+p {
+	margin-bottom: 0.35rem;
+	color: var(--clr-grey-5);
+	font-size: 1rem;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+		Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+ul {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+
+@media screen and (min-width: 800px) {
+	h1 {
+		font-size: 3.5rem;
+	}
+	h2 {
+		font-size: 2.5rem;
+	}
+
+	h3 {
+		font-size: 2rem;
+	}
+	h4 {
+		font-size: 1rem;
+	}
+	body {
+		font-size: 1rem;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4 {
+		line-height: 1;
+		letter-spacing: var(--spacing-per);
+		margin-bottom: 0.75rem;
+	}
+}
+
+img {
+	width: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+.checking {
+	margin: 4rem;
+}
+
+span {
+	color: var(--clr-grey-1);
+}
+h1 > span {
+	color: var(--clr-primary-5);
+}
+
+.underline {
+	width: 5.5rem;
+	height: 0.2125rem;
+	margin-bottom: 1.25rem;
+	background: var(--underline-secondary);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.section {
+	padding: 5rem 0;
+}
+
+.section-title {
+	text-align: center;
+	margin-bottom: 4rem;
+	text-transform: capitalize;
+}
+.section-title h2 {
+	text-transform: capitalize;
+}
+
+.section-center {
+	width: 90vw;
+	margin: 0 auto;
+	max-width: var(--max-width-nav);
+}
+
+@media screen and (min-width: 1192px) {
+	.section-center {
+		max-width: var(--max-width-nav);
+	}
+}
+
+/* 
+
+=============
+Title
+=============
+
+*/
+
+.title {
+	color: var(--clr-primary-5);
+	text-transform: capitalize;
+	text-align: center;
+}
+
+.page {
+	width: var(--view-width);
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 4rem 2rem;
+}
+
+.btn {
+	cursor: pointer;
+	color: var(--clr-white);
+	background: var(--clr-primary-5);
+	border: transparent;
+	border-radius: var(--border-radius);
+	letter-spacing: var(--spacing-wide);
+	padding: 0.375rem 0.75rem;
+	box-shadow: var(--shadow-1);
+	transition: var(--transition);
+	text-transform: capitalize;
+	display: inline-block;
+}
+.btn:hover {
+	background: var(--clr-primary-6);
+	box-shadow: var(--shadow-lg);
+}
+
+.form {
+	width: var(--view-width);
+	max-width: 600px;
+	background: var(--clr-white);
+	margin: 0 auto;
+	padding: 1.5rem 0.6rem;
+}
