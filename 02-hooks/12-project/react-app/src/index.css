@@ -1,0 +1,11 @@
+.container {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.71);
+	width: 43rem;
+	margin: 4rem auto;
+	padding: 4rem;
+	max-width: 50rem;
+	gap: 2rem;
+}

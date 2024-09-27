@@ -3,7 +3,7 @@
 React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
 
 React components are JavaScript functions that return markup:(`<html>`)
-https://funny-semolina-3bbbee.netlify.app/
+
 ## Component Rules
 
 1. It should start with capital letter
@@ -13,9 +13,11 @@ https://funny-semolina-3bbbee.netlify.app/
 ## JSX Component Rules
 
 1. Always return one parent element
-2. Better to with semantics
+2. Better to write with semantics
 3. There are some difference in naming between pure js and jsx.
    For instance,
+
+## Js
 
 ```html
 <div>
@@ -271,7 +273,7 @@ const Course = (props) => {
 };
 ```
 
-For the components we do no have the props properties, nothing will be rendered.
+For the components that we don't have the props properties, nothing will be rendered.
 
 ```jsx
 import ReactDOM from "react-dom/client";
@@ -406,7 +408,7 @@ const Course = ({ img, name, duration }) => {
 
 Anything that comes between the tags of component is known as children and can be accessed using `{children}`.
 
-A special prop that is provided by react, we can place it any in our components, note that it can be only accessed through children prop.
+A special prop that is provided by react, we can place it in any of our components, note that it can be only accessed through children prop.
 
 ```jsx
 const Courses = () => {
@@ -416,6 +418,7 @@ const Courses = () => {
 				img={firstSubject.img}
 				name={firstSubject.title}
 				duration={firstSubject.duration}>
+				// h2 tag is a children and can be accessed using `props.children.`
 				<h2>Hello World, I am from children props</h2>
 			</Course>
 			<Course
@@ -573,7 +576,7 @@ const Course = ({ img, title, duration }) => {
 
 ## Key prop
 
-the key prop is a special attribute you need to include when creating lists of elements. The key prop is used to help React identify which items have changed, are added, or are removed, thus optimizing the rendering process. Keys should be given to the elements inside the array to give the elements a stable identity
+The key prop is a special attribute you need to include when creating lists of elements. The key prop is used to help React identify which items have changed,or added, or removed, thus optimizing the rendering process. Keys should be given to the elements inside the array to give the elements a stable identity.
 
 ```JSX
 
@@ -623,7 +626,7 @@ const Course = (props) => {
 
 Based on user behavior, we want some sort of response to happen.
 
-src:"https://react.dev/learn/responding-to-events"
+[events]("https://react.dev/learn/responding-to-events")
 
 ### Three main events.
 
@@ -660,6 +663,8 @@ const HandleEvents = () => {
 	);
 };
 ```
+
+Event handlers make sure that the actions of events are executed.
 
 #### Adding e.preventDefault()
 
@@ -703,7 +708,7 @@ const HandleEvents = () => {
 </section>
 ```
 
-1. If we add the attribute of `type="button"`, we cannot submit the form using this buttton.
+1. If we add the attribute of `type="button"`, we cannot submit the form using this button.
 
 ```jsx
 <button onClick={handleInput} type="button">
@@ -732,5 +737,3 @@ const HandleEvents = () => {
 # Props Drilling
 
 By default, Data can only be passed from top to bottom, not the other way around.
-
-

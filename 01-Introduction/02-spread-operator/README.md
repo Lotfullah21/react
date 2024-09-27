@@ -1,9 +1,9 @@
 ## Spread operator ...
 
-it is a powerful feature in JavaScript that allows us to expand our iterable elements like arrays,objects and strings.
+It is a powerful feature in JavaScript that allows us to expand our iterable elements like arrays,objects and strings.
 by expanding, we mean that we can take individual element of the iterable and put it into other iterables or use it as an argument to a function.
 for instance, we take an array and using spread operator, put it inside an object.
-by iterable, we mean data structures that can be iterated over its elements.
+By iterable, we mean data structures that can be iterated over its elements.
 
 #### Common use case
 
@@ -32,7 +32,7 @@ const copiedArray = [...originalArray, 12, 0]; // [1,2,3,12,0]
 
 ```js
 function add(a, b, c) {
-  return a + b + c;
+	return a + b + c;
 }
 
 const numbers = [1, 2, 3];
@@ -56,25 +56,25 @@ it is often used for array and object destructuring, it is used for managing sta
 
 ```js
 const Parent = () => {
-  const info = {
-    name: "HoshmandLab",
-    subjects: {
-      AI: "Artificial Intelligence",
-      ML: "Machine Learning",
-    },
-  };
+	const info = {
+		name: "HoshmandLab",
+		subjects: {
+			AI: "Artificial Intelligence",
+			ML: "Machine Learning",
+		},
+	};
 
-  return <Child {...info}></Child>;
+	return <Child {...info}></Child>;
 };
 
 const Child = ({ name, subjects }) => {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <p>{subjects.ML}</p>
-      <p>{subjects.AI}</p>
-    </div>
-  );
+	return (
+		<div>
+			<h1>{name}</h1>
+			<p>{subjects.ML}</p>
+			<p>{subjects.AI}</p>
+		</div>
+	);
 };
 
 export default Parent;
@@ -84,45 +84,43 @@ if it was not for "(...)", we had to write manually all the object properties wh
 
 ```js
 const Button = ({ type, children, ...buttonProps }) => {
-  const className = type === "primary" ? "PrimaryButton" : "SecondaryButton";
-  console.log(type);
-  return (
-    <button className={`Button ${className}`} {...buttonProps}>
-      {children}
-    </button>
-  );
+	const className = type === "primary" ? "PrimaryButton" : "SecondaryButton";
+	console.log(type);
+	return (
+		<button className={`Button ${className}`} {...buttonProps}>
+			{children}
+		</button>
+	);
 };
 
 const LoginButton = ({ type, children, ...buttonProps }) => {
-  return (
-    <Button type="secondary" {...buttonProps}>
-      {children}
-    </Button>
-  );
+	return (
+		<Button type="secondary" {...buttonProps}>
+			{children}
+		</Button>
+	);
 };
 
 const ButtonContainer = () => {
-  return (
-    <div className="buttonContainer">
-      <header>HoshmandLab</header>
-      <Button
-        type="primary"
-        onClick={() => {
-          alert("Signing up");
-        }}
-      >
-        Sign up
-      </Button>
-      <LoginButton
-        type="secondary"
-        onClick={() => {
-          alert("Login in");
-        }}
-      >
-        Login
-      </LoginButton>
-    </div>
-  );
+	return (
+		<div className="buttonContainer">
+			<header>HoshmandLab</header>
+			<Button
+				type="primary"
+				onClick={() => {
+					alert("Signing up");
+				}}>
+				Sign up
+			</Button>
+			<LoginButton
+				type="secondary"
+				onClick={() => {
+					alert("Login in");
+				}}>
+				Login
+			</LoginButton>
+		</div>
+	);
 };
 
 export default ButtonContainer;
@@ -131,21 +129,20 @@ export { LoginButton };
 
 ### {...buttonProps}
 
-we use this, so that even if we do not mention the properties passed by parent explicitely, just by adding this we can inherit all of those properties.
+we use this, so that even if we do not mention the properties passed by parent explicitly, just by adding this we can inherit all of those properties.
 for instance in bellow snippet, even though we did not passed the "onClick" to the "LoginButton" still we had access and applied that property to our button.
 the order which we pass that is also important.
 
 ```js
 const LoginButton = ({ type, children, ...buttonProps }) => {
-  return (
-    <Button
-      type="secondary"
-      {...buttonProps}
-      onClick={() => alert("Hello LOGIN")}
-    >
-      {children}
-    </Button>
-  );
+	return (
+		<Button
+			type="secondary"
+			{...buttonProps}
+			onClick={() => alert("Hello LOGIN")}>
+			{children}
+		</Button>
+	);
 };
 ```
 
@@ -153,15 +150,14 @@ due to the fact that we wrote "{...buttonProps}" before "onClick" it will overri
 
 ```js
 const LoginButton = ({ type, children, ...buttonProps }) => {
-  return (
-    <Button
-      type="secondary"
-      onClick={() => alert("Hello LOGIN")}
-      {...buttonProps}
-    >
-      {children}
-    </Button>
-  );
+	return (
+		<Button
+			type="secondary"
+			onClick={() => alert("Hello LOGIN")}
+			{...buttonProps}>
+			{children}
+		</Button>
+	);
 };
 ```
 
@@ -170,3 +166,12 @@ in the above case, due to ordering importance, we will get "Login in" as the pro
 ## Note
 
 order of spread is !important here.
+
+#### Array destructuring
+
+Using ES6, we can destructure an array and store the arrays values into variables
+
+```jsx
+const courses = ["ai", "ml", "dl"]
+const [artificial-intelligence, machine-learning, deep-learning]
+```

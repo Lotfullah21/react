@@ -17,43 +17,37 @@ It allows us to install external packages.
 
 `create-react-app` is a package.
 
-`npm create-react-app`: install `create-react-app`.
-`npx create-react-app`: install and execute package `create-react-app` to create `react-app` instance.
-`npx create-react-app`: install and execute package `create-react-app` to create `react-app` instance.
+- `npm create-react-app`: install `create-react-app`.
+- `npx create-react-app`: install and execute package `create-react-app` to create `react-app` instance.
 
 ### Few good commands
 
-`ls`: to know all the directories setting in current directory.
-`cd desktop`: change the root to desktop.
+- `ls`: to know all the directories setting in current directory.
+- `mkdir dir-nama`: create a directory.
+- `cd desktop`: change the directory to desktop.
 
 ## How to create a react app instance
 
 1. `ls`: to know all the directories setting in current directory.
-2. `cd desktop`: change the root to desktop.
-3. `npx create-react-app app-name`: install and execute package `create-react-app` to create `react-app` instance with the name of `app-name`.
-   If the above command gives error.
+2. `cd desktop`: change the directory to desktop.
+3. `npx create-react-app app-name`: install and execute package, `create-react-app` to create a `react-app` instance with the name of `app-name`.
+   If the above command gives error, ues the following command instead
 4. `npx create-react-app@latest app-name`: install and execute package `create-react-app` to create `react-app` instance.
 
-## Files in our app
+## Files in our react app
 
-1. node_modules
-   Contains all dependencies required by the app and main dependencies are in package.json.
+1. node_modules Contains all dependencies required by the app and main dependencies are in package.json.
 
-2. public
-   Contains static assets including index.html
+2. public Contains static assets including index.html
 
-3. src
-   All of our logics are implemented in this folder, it acts as a brain of our application.
+3. src contains all of our logics and those are implemented in this folder, it acts as a brain of our application.
    We do all of our work here.
 
-4. .gitignore
-   Specifies which files to be ignored when adding our changes to github.
+4. .gitignore specifies which files to be ignored when adding our changes to github, crucially important to hide the important information like secret keys.
 
 5. packages.json
    It contains information about our project, for instance list of dependencies, scripts and so on.
-   Scripts written in `packages.json` files can be run in our project.
-
-6. packages.json
+   Scripts written in `packages.json` are files that can be run in our project.
    It is a snap shot of the main dependencies in our project.
 
 ## Starting the application
