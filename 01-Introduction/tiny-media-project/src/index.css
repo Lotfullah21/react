@@ -1,0 +1,31 @@
+* {
+	padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.video-wrapper {
+	position: relative;
+	padding-top: 56.25%; /* 16:9 Aspect Ratio */
+	overflow: hidden;
+}
+
+.react-player {
+	position: absolute;
+	top: 2rem;
+	left: 8rem;
+	width: 70%;
+	height: 70%;
+}
+
+.navbar {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	gap: 2rem;
+	height: 3rem;
+	font-size: 1.2rem;
+	padding: 2rem;
+	background-color: grey;
+	text-transform: capitalize;
+}

@@ -84,10 +84,9 @@ import { createContext } from "react";
 const MyContext = createContext();
 ```
 
-- 2. Create Provider component
-     create Provider that will act as the provider of the context where you want put the data to be shared.
-     why children?
-     - In React, "children" refers to a special prop that is automatically passed to components and represents the content or nested elements placed within the opening and closing tags of a component when it is used in JSX. Essentially, "children" allows you to include and render content or components within other components.
+- 2. Create Provider component create Provider that will act as the provider of the context where you want put the data to be shared.
+
+why children? - In React, "children" refers to a special prop that is automatically passed to components and represents the content or nested elements placed within the opening and closing tags of a component when it is used in JSX. Essentially, "children" allows you to include and render content or components within other components.
 
 ```js
 function MyComponent(props) {
@@ -101,7 +100,6 @@ function MyComponent(props) {
 </MyComponent>
 ```
 
-<p> is the children here.
 So, WHY CHILDREN.
 this allow the rendering of components that are wrapped by the provider
 This is how we make the context data available to those child components.
@@ -121,8 +119,7 @@ function MyProvider({ children }) {
 }
 ```
 
-- 3. Use Provider in the App.
-     Provider should be placed in an environment that all other components could be wrapped within the Provider so that they can have access to the context data.
+- 3. Use Provider in the App, Provider should be placed in an environment that all other components could be wrapped within the Provider so that they can have access to the context data.
 
 ```js
 function App() {

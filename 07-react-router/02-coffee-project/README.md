@@ -28,9 +28,39 @@ It loads and update the necessary data and react router helps us in achieving th
 
 With each request, we are not handling the routing in backend, but we are doing it in front end unlike pure `html` pages where for each request, the necessary data should come from the server.
 
-### Good Extension
+n React, the entire app is loaded inside a single div, you're not actually visiting different pages, and Different views are rendered when React makes changes to the Virtual DOM, with React updating the real DOM accordingly.
 
-- Vs code styled component
+### How SPAs work?
+
+When the user navigates to the web application in the browser, the Web Server will return the necessary resources to run the application. There are two approaches to serving code and resources in Single Page Applications.
+
+##### 1. Bundling
+
+When the browser requests the application, return and load all necessary HTML, CSS and JavaScript immediately. This is known as bundling.
+
+##### 2. Lazy loading
+
+When the browser requests the application, return only the minimum HTML, CSS and JavaScript needed to load the application. Additional resources are downloaded as required by the application, for example, when a user navigates to a specific section of the application. This is known as lazy loading or code splitting.
+
+#### Single Page Application (SPA):
+
+Instead of loading new HTML pages for each route, the app dynamically updates the content inside that single <div> (commonly id="root"). React handles routing, state management, and rendering views within this container.
+
+#### Virtual DOM:
+
+React uses a Virtual DOM, which is an in-memory representation of the actual DOM. Whenever the state or props change in the app, React renders the necessary components to the Virtual DOM first.
+
+#### Reconciliation:
+
+React compares the updated Virtual DOM with the previous one, determining what has actually changed. This process is called reconciliation.
+
+#### Efficient DOM Updates:
+
+After identifying the differences, React updates only the parts of the real DOM that have changed, ensuring minimal performance overhead. This prevents a full page reload, making interactions fast and efficient.
+
+#### Routing in SPAs:
+
+Even though you're technically on the same page, libraries like React Router allow for the simulation of navigation between different "pages" or views. The URL may change, but the actual page doesn't reload; React simply renders the appropriate components for that route.
 
 #### Basic Components
 
