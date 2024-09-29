@@ -10,7 +10,7 @@ import Practice from "./tutorials/Practice";
 function App() {
 	return (
 		<div className="container">
-			<Practice></Practice>
+			<FetchUsersWithEffects></FetchUsersWithEffects>
 		</div>
 	);
 }

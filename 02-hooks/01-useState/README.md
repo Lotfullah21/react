@@ -1,9 +1,8 @@
 ## React Hook
 
-Hooks are a set of functions that allow us to add state and other React features to functional components without using class components.
-.
+Hooks are a set of functions that allow us to hook into other functions and states, it also mitigates usage of class components as they used in earlier versions.
 
-#### 1. useEffect:
+### 1. useEffect:
 
 Used for handling side effects in functional components, such as data fetching, subscriptions, or DOM manipulation. It's similar to componentDidMount, componentDidUpdate, and componentWillUnmount lifecycle methods in class components
 
@@ -38,7 +37,7 @@ const HelloState = () => {
 `undefined` is the initial value and `f` is the function to control that value.
 Same goes with ` console.log(useState(``)); // [1, f] `, but here the initial value is 1 or state value is 1.
 
-##### 1. Using indexing
+### 1. Using indexing
 
 As it is returning an array, we can directly destructure it or use indexing to get access to the state value and the function.
 
@@ -51,13 +50,101 @@ const HelloState = () => {
 };
 ```
 
-##### 2. Destructuring
+### 2. Destructuring
 
-```js
+We use array destructuring to have freedom of giving names of our choice to the return values, otherwise, if ues object destructuring, the names should match to the values we destructure.
+
+```jsx
 const [value, setValue] = useState(0);
 ```
 
 In fact, we are storing the value of the state in `value` variable and the function to control it in `setValue`.
+
+### Updating object's states
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+	const [greeting, setGreeting] = useState({ greet: "Hello, World" });
+	console.log(greeting, setGreeting);
+
+	function updateGreeting() {
+		setGreeting({ greet: "Hello, World-Wide Web" });
+	}
+
+	return (
+		<div>
+			<h1>{greeting.greet}</h1>
+			<button onClick={updateGreeting}>Update greeting</button>
+		</div>
+	);
+}
+```
+
+While this works, it's not the recommended way of working with state objects in React, this is because the state object usually has more than a single property, and it is costly to update the entire object just for the sake of updating only a small part of it.
+
+The suggested approach for updating the state object in React when using useState is to copy the state object and then update the copy.
+
+This usually involves using the spread operator (...).
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+	const [greeting, setGreeting] = useState({ greet: "Hello, World" });
+	console.log(greeting, setGreeting);
+
+	function updateGreeting() {
+		const newGreeting = { ...greeting };
+		newGreeting.greet = "Hello, World-Wide Web";
+		setGreeting(newGreeting);
+	}
+
+	return (
+		<div>
+			<h1>{greeting.greet}</h1>
+			<button onClick={updateGreeting}>Update greeting</button>
+		</div>
+	);
+}
+```
+
+To reiterate, the proper way of working with state when it's saved as an object is to:
+
+- Copy the old state object using the spread (...) operator and save it into a new variable and
+- Pass the new variable to the state-updating function
+
+#### Another way
+
+```jsx
+import { useState } from "react";
+
+export default function App() {
+	const [greeting, setGreeting] = useState({
+		greet: "Hello",
+		place: "World",
+	});
+	console.log(greeting, setGreeting);
+
+	function updateGreeting() {
+		setGreeting((prevState) => {
+			return { ...prevState, place: "World-Wide Web" };
+		});
+	}
+
+	return (
+		<div>
+			<h1>
+				{greeting.greet}, {greeting.place}
+			</h1>
+			<button onClick={updateGreeting}>Update greeting</button>
+		</div>
+	);
+}
+```
+
+The reason this works is because it uses the previous state, which is named prevState, and this is the previous value of the greeting variable. In other words, it makes a copy of the prevState object, and updates only the place property on the copied object. It then returns a brand-new object:
 
 ### Initial Render
 
@@ -101,5 +188,9 @@ We use the concept of batching where we group multiple state update and render i
 
 ## Few good shortcuts
 
-- use `command+k` in mac or `Ctrl + l` to clear the console in the browser
+- `Ctrl + l` to clear the console in the browser
 - or console.clear()
+
+```
+
+```

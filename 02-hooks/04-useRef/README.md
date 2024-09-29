@@ -1,6 +1,6 @@
 ## useRef
 
-unlike useState Hook, we will the page is not going to re-render if the useRef value changes.
+unlike useState Hook, page is not going to re-render if the useRef value changes.
 The `useRef` hook is used to create a mutable reference to a value that persists across renders of a component. Unlike the `useState` hook, which causes a re-render when the state changes, `useRef` does not trigger a re-render when the value it holds changes. Instead, it allows you to interact with the DOM or hold onto values in a way that is not tied to the component's rendering cycle.
 
 The `useRef` hook is commonly used for the following purposes:

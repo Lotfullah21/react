@@ -3,8 +3,8 @@ in the snippet below, every time we re-render our app, this function would be cr
 
 ```js
 const removeCollege = (id) => {
-  const newCollege = data.filter((college) => college.id !== id);
-  setData(newCollege);
+	const newCollege = data.filter((college) => college.id !== id);
+	setData(newCollege);
 };
 ```
 
@@ -14,18 +14,18 @@ import List from "./List";
 import Counter from "./Counter";
 import universities from "../data/Data";
 const Colleges = () => {
-  const [data, setData] = useState(universities);
-  // function that causes re-rendering.
-  const removeCollege = (id) => {
-    const newCollege = data.filter((college) => college.id !== id);
-    setData(newCollege);
-  };
-  return (
-    <div>
-      <Counter></Counter>
-      <List colleges={data} removeCollege={removeCollege}></List>
-    </div>
-  );
+	const [data, setData] = useState(universities);
+	// function that causes re-rendering.
+	const removeCollege = (id) => {
+		const newCollege = data.filter((college) => college.id !== id);
+		setData(newCollege);
+	};
+	return (
+		<div>
+			<Counter></Counter>
+			<List colleges={data} removeCollege={removeCollege}></List>
+		</div>
+	);
 };
 export default Colleges;
 ```
@@ -36,7 +36,10 @@ useCallback hook to the rescue.
 ### what is useCallback hook?
 
 In React, the useCallback hook is used to memoize functions, which can be particularly useful for optimizing performance in your components. It memoizes a function so that it doesn't get recreated on every render unless its dependencies change. This can help prevent unnecessary re-renders of child components or avoid unnecessary computations in your application.
-it takes two arguments, first one is the function to be memoized and the 2nd one is a dependency array which dictates the callback when to re-create the function from scratch.
+
+## Arguments:
+
+It takes two arguments, first one is the function to be memoized and the 2nd one is a dependency array which dictates the callback when to re-create the function from scratch.
 it is important to add, otherwise the functionality will no work properly.
 if dependency array is empty, the function will be re-created only once.
 
@@ -46,21 +49,21 @@ import List from "./List";
 import Counter from "./Counter";
 import universities from "../data/Data";
 const Colleges = () => {
-  const [data, setData] = useState(universities);
-  //
+	const [data, setData] = useState(universities);
+	//
 
-  const removeCollege = useCallback((id) => {
-    console.log(data);
-    const newCollege = data.filter((college) => college.id !== id);
-    setData(newCollege);
-  }, []);
+	const removeCollege = useCallback((id) => {
+		console.log(data);
+		const newCollege = data.filter((college) => college.id !== id);
+		setData(newCollege);
+	}, []);
 
-  return (
-    <div>
-      <Counter></Counter>
-      <List colleges={data} removeCollege={removeCollege}></List>
-    </div>
-  );
+	return (
+		<div>
+			<Counter></Counter>
+			<List colleges={data} removeCollege={removeCollege}></List>
+		</div>
+	);
 };
 export default Colleges;
 ```
@@ -70,7 +73,7 @@ By memoizing the removeCollege function with useCallback, we ensure that it reta
 
 Common use cases for useCallback include:
 
-Preventing unnecessary renders of memoized components (e.g., using React.memo).
-Avoiding infinite loops in useEffect dependencies by memoizing functions used as effect callbacks.
-Optimizing performance when passing callback props to child components.
-Keep in mind that while useCallback can be helpful for performance optimization, it's important not to overuse it. Only memoize functions when you have a specific performance concern, as it can make your code harder to read and understand if used excessively.
+- Preventing unnecessary renders of memoized components (e.g., using React.memo).
+- Avoiding infinite loops in useEffect dependencies by memoizing functions used as effect callbacks.
+- Optimizing performance when passing callback props to child components.
+- Keep in mind that while useCallback can be helpful for performance optimization, it's important not to overuse it. Only memoize functions when you have a specific performance concern, as it can make your code harder to read and understand if used excessively.

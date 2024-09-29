@@ -4,6 +4,7 @@ const FetchUsersWithEffects = () => {
 	const [users, setUsers] = useState([]);
 	const [error, setError] = useState(false);
 	const [loading, setLoading] = useState(true);
+
 	useEffect(() => {
 		const FetchUser = async () => {
 			try {

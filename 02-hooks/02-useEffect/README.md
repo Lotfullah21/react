@@ -1,7 +1,6 @@
 # useEffect
 
-Side effects in React refer to actions that occur outside of the regular component rendering cycle, such as data fetching, subscribing to external services, manipulating the DOM, and so on. The useEffect hook is used to manage these side effects in a
-controlled and efficient manner.
+Side effects in React refer to actions that occur outside of the regular component rendering cycle, such as data fetching, subscribing to external services, manipulating the DOM, and so on. The useEffect hook is used to manage these side effects in a controlled and efficient manner.
 
 This function will run after the component has rendered.
 
@@ -87,6 +86,8 @@ You define the useEffect hook inside your functional component. It takes two arg
 ## Running the Effect:
 
 When the component is rendered, the function inside `useEffect` is executed. It might perform tasks like fetching data, updating the DOM, or setting up event listeners.
+The code you place inside the useEffect hook always runs after your component mounts or, in other words, after React has updated the DOM.
+In addition, depending on our configuration via the dependencies array, our effects can also run when certain state variables or props change.
 
 ```js
 import { useState, useEffect } from "react";
@@ -101,7 +102,7 @@ const HelloFromUseEffect = () => {
 
 	useEffect(() => {
 		console.log("from useEffect");
-	}, []);
+	});
 
 	return (
 		<div>
@@ -131,10 +132,34 @@ useEffect(() => {
 ```
 
 Now, it will be invoked only for the first time and that is the initial rendering and the `regular()` will be invoked every time we update the sate value.
+We are saying, regardless of what happens to our app, do not invoke the useEffect except the first time.
 
 ## Cleaning Up:
 
 If the effect requires cleanup, such as unsubscribing from a subscription or removing event listeners, you can return a cleanup function from the effect.
+
+Some side effects may need to clean up resources or memory that is not required anymore, avoiding any memory leaks that could slow down your applications.
+
+For example, you may want to set up a subscription to an external data source. In that scenario, it is vital to perform a cleanup after the effect finishes its execution.
+
+```jsx
+function LittleLemonChat(props) {
+	const [status, chatStatus] = useState("offline");
+
+	useEffect(() => {
+		LemonChat.subscribeToMessages(props.chatId, () => setStatus("online"));
+
+		return () => {
+			setStatus("offline");
+			LemonChat.unsubscribeFromMessages(props.chatId);
+		};
+	}, []);
+
+	// ...
+}
+```
+
+[useEffect](https://www.coursera.org/learn/advanced-react/supplement/LhsqC/what-is-the-useeffect-hook)
 
 ## Dependencies Array:
 
@@ -249,6 +274,7 @@ useEffect(() => {
 	const fetchData = async () => {
 		const data = await fetch(ulr);
 		const response = await data.json();
+		console.log(response, data);
 		return response;
 	};
 	fetchData();
@@ -258,6 +284,8 @@ useEffect(() => {
 ## Use cases
 
 One of the best use cases here would be fetching data from an external API, if we add the fetching functionality inside a regular function, every time we render the component or change the state value, we are making a call to that `API` which is not a good practice. Because most of the API's have limits on how many times we can make a request to that server.
+
+When JavaScript uses the fetch function it is delegating duties to an external API so that it can continue its process. This is known as asynchronous JavaScript
 
 ```js
 import { useState, useEffect } from "react";
@@ -389,7 +417,7 @@ for every `{}`, we are adding a block of code,which means that It should return 
 
 We added another `{}` in map block, which we need to another return statement inside this block, otherwise it will return nothing.
 
-In JavaScript's `arrow functions` with a single expression, like the one you're using within `.map()`, the parentheses () around the expression implicitly indicate the return value.
+In JavaScript's `arrow functions` with a single expression, like the one we're using within `.map()`, the parentheses () around the expression implicitly indicate the return value.
 
 ```js
 return (
