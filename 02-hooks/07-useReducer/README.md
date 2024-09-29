@@ -108,15 +108,55 @@ const [state, dispatch] = useReducer(reducer, initialState);
 
 ### - 4. dispatch functions: create function that dispatch actions to update the state.
 
-- ```js
-  const increment = () => {
-  	dispatch({ type: "INCREMENT" });
-  };
-  const decrement = () => {
-  	dispatch({ type: "DECREMENT" });
-  };
-  ```
-  ;
+```jsx
+const increment = () => {
+	dispatch({ type: "INCREMENT" });
+};
+const decrement = () => {
+	dispatch({ type: "DECREMENT" });
+};
+```
+
+Complete code:
+
+```jsx
+import { useReducer } from "react";
+
+const initialState = {
+	count: 0,
+};
+
+const reducer = (state, action) => {
+	if (action.type === "INCREMENT") {
+		return { ...state, count: state.count + 1 };
+	}
+	if (action.type === "DECREMENT") {
+		return { ...state, count: state.count - 1 };
+	}
+	return state;
+};
+
+const Counter = () => {
+	const [state, dispatch] = useReducer(reducer, initialState);
+
+	const increment = () => {
+		dispatch({ type: "INCREMENT" });
+	};
+	const decrement = () => {
+		dispatch({ type: "DECREMENT" });
+	};
+
+	return (
+		<>
+			<h1>{state.count}</h1>
+			<button onClick={increment}>increment</button>
+			<button onClick={decrement}>decrement</button>
+		</>
+	);
+};
+
+export default Counter;
+```
 
 ### - 5. render the state:
 
@@ -131,3 +171,11 @@ return (
 ```
 
 What ever we return from the reducer, that will be state value.
+
+### When to choose useReducer vs useState
+
+The useState hook is best used on less complex data.
+
+While it's possible to use any kind of a data structure when working with useState, it's better to use it with primitive data types, such as strings, numbers, or booleans.
+
+The useReducer hook is best used on more complex data, specifically, arrays or objects.

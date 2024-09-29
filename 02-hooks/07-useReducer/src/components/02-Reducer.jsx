@@ -1,36 +1,44 @@
 import { useReducer } from "react";
 
-const initialState = {
-  count: 0,
-};
-
 const reducer = (state, action) => {
-  if (action.type === "INCREMENT") {
-    return { ...state, count: state.count + 1 };
-  }
-  if (action.type === "DECREMENT") {
-    return { ...state, count: state.count - 1 };
-  }
-  return state;
+	switch (action.type) {
+		case "BUY_BOOKS":
+			console.log("action");
+			return { ...state, money: state.money - 10 };
+		case "ORDER_FOOD":
+			return { ...state, money: state.money - 90 };
+		case "SAVE_MONEY":
+			return { ...state, money: state.money + 100 };
+		default:
+			return state;
+	}
 };
 
-const Counter = () => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+const ReducerApp = () => {
+	const initialState = {
+		money: 100,
+	};
 
-  const increment = () => {
-    dispatch({ type: "INCREMENT" });
-  };
-  const decrement = () => {
-    dispatch({ type: "DECREMENT" });
-  };
+	const [state, dispatch] = useReducer(reducer, initialState);
+	console.log("state", state, "dispatch", dispatch);
 
-  return (
-    <>
-      <h1>{state.count}</h1>
-      <button onClick={increment}>increment</button>
-      <button onClick={decrement}>decrement</button>
-    </>
-  );
+	const buyBooks = () => {
+		dispatch({ type: "BUY_BOOKS" });
+	};
+	const orderFood = () => {
+		dispatch({ type: "ORDER_FOOD" });
+	};
+	const saveMoney = () => {
+		dispatch({ type: "SAVE_MONEY" });
+	};
+
+	return (
+		<div>
+			<h1>{state.money}</h1>
+			<button onClick={buyBooks}>buy books</button>
+			<button onClick={orderFood}>order food</button>
+			<button onClick={saveMoney}>save money</button>
+		</div>
+	);
 };
-
-export default Counter;
+export default ReducerApp;
