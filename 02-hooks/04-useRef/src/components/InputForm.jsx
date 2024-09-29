@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 
 const InputForm = () => {
-	const [value, setValue] = useState();
+	const [value, setValue] = useState("");
 	const refValue = useRef(null);
-
 	console.log(refValue);
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const name = refValue.current.value;
@@ -14,7 +14,10 @@ const InputForm = () => {
 	useEffect(() => {
 		console.log(refValue);
 	});
-	const handleChange = (e) => {};
+
+	const handleChange = (e) => {
+		setValue(e.target.value);
+	};
 
 	return (
 		<>
@@ -25,7 +28,6 @@ const InputForm = () => {
 					<input
 						type="text"
 						id="name"
-						value={value}
 						name="name"
 						ref={refValue}
 						onChange={handleChange}></input>
