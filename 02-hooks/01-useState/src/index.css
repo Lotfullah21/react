@@ -344,3 +344,13 @@ a p {
 		grid-template-columns: repeat(4, 1fr);
 	}
 }
+
+.cart-container {
+	display: flex;
+	gap: 2rem;
+	box-shadow: 2px 3px 5px grey;
+	padding: 0.8rem;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 0.2rem;
+}

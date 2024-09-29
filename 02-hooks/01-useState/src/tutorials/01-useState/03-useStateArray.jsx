@@ -2,7 +2,7 @@ import { useState } from "react";
 import { data } from "../data";
 
 const Practice = () => {
-	const [colleges, setCollege] = useState(data);
+	const [colleges, setColleges] = useState(data);
 
 	const handleClick = (rank) => {
 		// Whenever we click on a button, return a new list of items whose ranks are different than the one we just clicked.
@@ -11,11 +11,15 @@ const Practice = () => {
 				return true;
 			}
 		});
-		setCollege(newCollege);
+		setColleges(newCollege);
 	};
 
 	const handleClickAll = () => {
-		setCollege([]);
+		setColleges([]);
+	};
+
+	const handleReset = () => {
+		setColleges([...colleges, ...data]);
 	};
 
 	return (
@@ -27,18 +31,27 @@ const Practice = () => {
 						<h2>{name}</h2>
 						<h3>{rank}</h3>
 						<button className="btn" onClick={() => handleClick(rank)}>
-							clear
+							remove
 						</button>
 					</div>
 				);
 			})}
 
-			<button
-				style={{ marginTop: "3rem" }}
-				className="btn"
-				onClick={handleClickAll}>
-				clear all
-			</button>
+			{colleges.length < 1 ? (
+				<button
+					style={{ marginTop: "3rem" }}
+					className="btn"
+					onClick={handleReset}>
+					reset
+				</button>
+			) : (
+				<button
+					style={{ marginTop: "3rem" }}
+					className="btn"
+					onClick={handleClickAll}>
+					clear all
+				</button>
+			)}
 		</div>
 	);
 };

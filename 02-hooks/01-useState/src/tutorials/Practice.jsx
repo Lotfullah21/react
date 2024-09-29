@@ -1,25 +1,22 @@
 import { useState } from "react";
-import { data } from "./data";
 
 const Practice = () => {
-	const [person, setPerson] = useState({
-		name: "Ayaan",
-		age: "24",
-		place: "Canada",
-	});
+	const [count, setCount] = useState(5);
 
 	const handleClick = () => {
-		setPerson({ name: "Aayush", age: "29", place: "No where" });
+		setCount((prevCount) => {
+			return prevCount + 1;
+		}); // 6
+		setCount((prevCount) => prevCount + 1); // 7
+		setCount((prevCount) => prevCount + 1); // 8
 	};
 
 	return (
 		<div>
-			<h2>{person.name}</h2>
-			<h3>{person.age}</h3>
-			<h4>{person.place}</h4>
 			<button className="btn" onClick={handleClick}>
 				click here
 			</button>
+			<h2>{count}</h2>
 		</div>
 	);
 };

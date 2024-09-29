@@ -18,8 +18,9 @@ const UseObjectState = () => {
 				<h4>{course}</h4>
 				<h5>{location}</h5>
 			</div>
+
 			<button onClick={showCollege} className="btn">
-				Stanford
+				another college
 			</button>
 		</>
 	);

@@ -4,10 +4,11 @@ const UseObjectState = () => {
 	const [college, setCollege] = useState({
 		name: "MIT",
 		course: "Computer Science",
-		location: "Boston,Massachuset",
+		location: "Boston,Massachusetts",
 	});
 	const showCollege = () => {
 		setCollege({
+			...college,
 			name: "Stanford",
 			course: "Artificial Intelligence",
 			location: "San Francisco,California",
