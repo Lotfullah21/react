@@ -77,7 +77,7 @@ Write the following commands to make our application deploy ready.
 1. "CTRL + c " to stop the server
 2. `npm run build`
 
-## Vite
+# Vite
 
 Vite is a build tool and development server for modern web projects, including those using React. It’s designed to provide a faster and more efficient development experience compared to traditional bundlers like Webpack.
 
@@ -100,3 +100,68 @@ npm run dev
 
 - One of the major difference is that all the files with `.js` extension will be converted to `.jsx` extension.
 - `index.html` sits in the root instead of the `public folder`.
+
+## Few points about React
+
+- React is a library with lots of helper functions and methods.
+- Gives the ability to developers to create re-usable components.
+- Minimum re-printing of the elements using another DOM(Document object model) called virtual DOM
+- React is declarative in nature, In plain js, we write more of imperative code than declarative.
+
+Plain Javascript, we have to tell, get the id, add event listener to that button once you find and so on.
+
+```js
+const Button = document.getElementById("btn");
+Button.addEventListener("click", () => {
+	console.log("Button Clicked");
+});
+```
+
+React
+
+```jsx
+const handleClick = () => {
+	console.log("Button Clicked");
+};
+
+return <button onClick={handleClick}>Click Me</button>;
+```
+
+## Differences:
+
+#### Vanilla JS:
+
+- You manually query the DOM element (getElementById).
+- You explicitly attach event listeners using addEventListener.
+
+#### React:
+
+- The onClick event is passed directly to the Button component as a prop.
+- React automatically handles event binding, making code more declarative.
+
+### DOM
+
+It is the document object model which represents our elements in terms of a tree.
+Now, lets say we are having a huge application and there is a value attached one of the nodes, now if that particular node's values changes, the entire application have to be re-printed, but in fact we have changed onl one node. That is where the beauty of Virtual DOM comes into play, it says instead of reprinting the entire application, why not just reprint that particular node, and react is heavily using Virtual DOM for printing the components.
+
+React maintains a lightweight representation of the actual DOM called the Virtual DOM. This is a JavaScript object that mirrors the structure of the real DOM.
+
+## Virtual DOM
+
+Concept: React maintains a lightweight representation of the actual DOM called the Virtual DOM. This is a JavaScript object that mirrors the structure of the real DOM.
+Efficiency: When changes occur, React updates the Virtual DOM first instead of the real DOM, minimizing direct DOM manipulation. This results in better performance since manipulating the real DOM can be slow and resource-intensive.
+
+## Reconciliation
+
+Diffing Algorithm: When the state of a component changes, React re-renders the component and compares the new Virtual DOM with the previous version. It uses a diffing algorithm to determine the minimal set of changes required.
+Batch Updates: React batches updates and applies them to the real DOM in an efficient manner, reducing the number of updates and improving performance.
+
+## Rendering
+
+render() Method: Each React component has a render() method (or function) that returns JSX, which is a syntax extension for JavaScript that resembles HTML. This JSX is converted into React elements that represent the Virtual DOM.
+ReactDOM: The ReactDOM library is responsible for rendering React elements into the real DOM. The ReactDOM.render() function is used to mount a React application to a specific DOM element.
+
+Virtual DOM: React uses a Virtual DOM for efficient updates.
+Reconciliation: Changes are calculated and applied in a minimal way.
+Rendering: Components render JSX, which is transformed into the Virtual DOM.
+Direct DOM Manipulation: Use refs when direct manipulation is necessary.

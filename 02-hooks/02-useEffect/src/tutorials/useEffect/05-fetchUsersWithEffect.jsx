@@ -8,14 +8,17 @@ const FetchUsersWithEffects = () => {
 	useEffect(() => {
 		const FetchUser = async () => {
 			try {
-				const response = await fetch(url);
+				// Sends a request to the URL and waits for the response
+				const response = await fetch("https://api.github.com/users");
 				if (!response.ok) {
 					setError(true);
 					setLoading(false);
 					return;
 				}
+				// Extracts and parses the JSON body of the response
 				const data = await response.json();
-				console.log(data);
+				// Actual data (parsed JSON) from the response body
+				console.log("Data", data);
 				setUsers(data);
 			} catch (error) {
 				//   if error,put this condition to true

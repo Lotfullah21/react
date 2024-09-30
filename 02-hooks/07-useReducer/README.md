@@ -69,7 +69,33 @@ A function that is provided by React to add state and side effects to our compon
 
 ##### what useReducer can do?
 
-It helps us to manage more complex states, we can use it at it's best when we are having multiple values inside our state.
+- It helps us to manage more complex states, we can use it at it's best when we are having multiple values inside our state.
+
+- It has only one state and one reducer function that helps us to manage the logic and state inside `reducer` function.
+
+## Why `useReducer`
+
+Lets say we are having four state variables, how to handle them individually, how to update them, how to keep them in one place, that is where the `useReducer` comes to rescue. It helps us ot manage our state inside one object and all of of our state logic inside one function (`reducer`).
+
+```jsx
+const [price, setPrice] = useState();
+const [color, setColor] = useState();
+const [rating, setRating] = useState();
+const [discount, setDiscount] = useState();
+```
+
+Now, lets use `useReducer`, isn't it beautiful really, the only thing is the setup is a bit time consuming, once its in place, we move like stars.
+
+```jsx
+const initialState = {
+	price: "",
+	color: "",
+	rating: "",
+	discount: "",
+};
+
+const [state, dispatchCartAction] = useReducer(reducer, initialState);
+```
 
 ## Steps to use useReducer hook
 
@@ -172,6 +198,63 @@ return (
 
 What ever we return from the reducer, that will be state value.
 
+## Payload
+
+We can pass data to our dispatch actions as payload and build our logic based on those data inside reducer function.
+
+```jsx
+import { useState } from "react";
+
+export const initialState = {
+	cart: [],
+};
+export const reducer = (state, action) => {
+	switch (action.type) {
+		case "REMOVE":
+			return {
+				...state,
+				cart: state.cart.filter((item) => item.id !== action.payload.id),
+			};
+
+		default:
+			return state;
+	}
+};
+```
+
+```jsx
+import { products } from "../db/data";
+import { useCartContext } from "../context/context";
+import ProductCard from "./ProductCard";
+
+const ProductsContainer = () => {
+	const { state, dispatchCartAction } = useCartContext();
+
+	const removeFromCart = (product) => {
+		dispatchCartAction({ type: "REMOVE", payload: product });
+	};
+
+	console.log(state.cart);
+	return (
+		<section className="cards-container">
+			{products.map((product) => {
+				return (
+					<div key={product.id} className="card-wrapper">
+						<ProductCard product={product} key={product.id}></ProductCard>
+						<button
+							className="cart-btn"
+							onClick={() => removeFromCart(product)}>
+							remove
+						</button>
+					</div>
+				);
+			})}
+		</section>
+	);
+};
+export default ProductsContainer;
+```
+
 ### When to choose useReducer vs useState
 
 The useState hook is best used on less complex data.
@@ -179,3 +262,12 @@ The useState hook is best used on less complex data.
 While it's possible to use any kind of a data structure when working with useState, it's better to use it with primitive data types, such as strings, numbers, or booleans.
 
 The useReducer hook is best used on more complex data, specifically, arrays or objects.
+One of the main advantage of using `useReducer` is we can write all of our logics in one place inside `reducer` function.
+
+## Pure functions
+
+pure functions are functions that adhere to two key principles:
+
+- Deterministic: Given the same input, a pure function will always return the same output. There are no side effects that could cause the function to return different results for the same input.
+
+- No side effects: Pure functions do not modify external state or variables. They do not alter anything outside their scope (e.g., they don't modify global variables, DOM elements, files, or databases). Instead, they only operate on the inputs given to them and return a new result.

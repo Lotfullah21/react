@@ -6,6 +6,7 @@ const HelloUseEffect = () => {
 	const invokeMe = () => {
 		console.log("Hello there");
 	};
+
 	invokeMe();
 	// to handle click.
 	const handleClick = () => {

@@ -159,7 +159,61 @@ function LittleLemonChat(props) {
 }
 ```
 
+```jsx
+import { useState, useEffect } from "react";
+
+const CleanUp = () => {
+	const [toggle, setToggle] = useState(false);
+	return (
+		<div>
+			{toggle && <New />}
+			<button onClick={() => setToggle(!toggle)}>Toggle the state here</button>
+		</div>
+	);
+};
+
+const New = () => {
+	useEffect(() => {
+		console.log("From side effect");
+
+		const hello = () => {
+			alert("window scrolled");
+		};
+		window.addEventListener("scroll", hello);
+
+		//   clean up function
+		return () => {
+			window.removeEventListener("scroll", hello);
+		};
+	}, []);
+	return <h1>Hello</h1>;
+};
+
+export default CleanUp;
+```
+
+## Mounting:
+
+When a React component is mounted, it means that the component is added to the DOM and made visible on the screen. The lifecycle of the component starts at this point, and it triggers certain hooks like useEffect (if defined) to perform side effects.
+
+##### Mounting:
+
+When toggle is true, the New component is mounted. This means it is added to the DOM, and the useEffect hook runs, logging "From side effect" to the console.
+
+###### Unmounting:
+
+When toggle is false, the New component is unmounted. React removes it from the DOM and runs the cleanup function inside useEffect, removing any event listeners or cleaning up side effects.
+
 [useEffect](https://www.coursera.org/learn/advanced-react/supplement/LhsqC/what-is-the-useeffect-hook)
+
+```jsx
+{
+	toggle && <New />;
+}
+```
+
+This means that if toggle is true, the <New /> component is rendered (mounted).
+If toggle is false, React will not render the <New /> component, effectively removing it from the DOM (unmounting).
 
 ## Dependencies Array:
 
@@ -318,6 +372,45 @@ export default FetchUsersWithEffects;
 ```
 
 In the above snippet, we are making a request only once.
+
+#### response:
+
+- An object representing the whole HTTP response, which includes:
+- Status (e.g., 200 OK, 404 Not Found)
+- Headers (e.g., content type, length)
+- The body (but still as raw data or a stream, not yet usable).
+
+```jsx
+{
+  "status": 200,
+  "statusText": "OK",
+  "headers": {...},
+  "body": ReadableStream // raw body before parsing
+}
+
+```
+
+#### data:
+
+- The actual content you want, which in this case is the array of user data from the GitHub API.
+- It’s parsed from the response body when you call response.json().
+
+```jsx
+[
+	{
+		login: "mojombo",
+		id: 1,
+		avatar_url: "https://avatars.githubusercontent.com/u/1?v=4",
+		node_id: "MDQ6VXNlcjE=",
+	},
+	{
+		login: "defunkt",
+		id: 2,
+		avatar_url: "https://avatars.githubusercontent.com/u/2?v=4",
+		node_id: "MDQ6VXNlcjI=",
+	},
+];
+```
 
 ### Normal setup for fetching the data using fetch
 
@@ -573,3 +666,19 @@ We can set some default images and when the image does not exist, we use that im
 ```js
 const img = images?.[0]?.small?.url || ourDefaultImage;
 ```
+
+## Non-primitive data types
+
+These data types are referenced by their memory location rather than their actual value, for instance
+
+````js
+a = {a:"12"}
+b = {a:"12"}
+a====b => false,
+because they are stored at different memory locations,
+
+primitive data types are referenced by their values.
+```js
+1===1 = true
+"b"==="b" = true
+````
