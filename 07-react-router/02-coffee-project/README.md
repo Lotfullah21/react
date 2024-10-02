@@ -1,9 +1,6 @@
 ## React Router:
 
-```js
-const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-const URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
-```
+React Router is a widely used library for handling routing and navigation in React applications. It allows us to create single-page applications (SPAs) where different components or pages are displayed based on the URL without causing a full page reload.
 
 ##### Installation
 
@@ -17,8 +14,6 @@ npm install react-toastify react-icons @tanstack/react-query
 npm i styled components
 
 ```
-
-React Router is a widely used library for handling routing and navigation in React applications. It allows us to create single-page applications (SPAs) where different components or pages are displayed based on the URL without causing a full page reload.
 
 ## Single page application(SPA):
 
@@ -34,35 +29,33 @@ n React, the entire app is loaded inside a single div, you're not actually visit
 
 When the user navigates to the web application in the browser, the Web Server will return the necessary resources to run the application. There are two approaches to serving code and resources in Single Page Applications.
 
-##### 1. Bundling
+### 1. Bundling
 
 When the browser requests the application, return and load all necessary HTML, CSS and JavaScript immediately. This is known as bundling.
 
-##### 2. Lazy loading
+### 2. Lazy loading
 
 When the browser requests the application, return only the minimum HTML, CSS and JavaScript needed to load the application. Additional resources are downloaded as required by the application, for example, when a user navigates to a specific section of the application. This is known as lazy loading or code splitting.
 
-#### Single Page Application (SPA):
+Instead of loading new HTML pages for each route, the app dynamically updates the content inside that single `<div>` (commonly id="root"). React handles routing, state management, and rendering views within this container.
 
-Instead of loading new HTML pages for each route, the app dynamically updates the content inside that single <div> (commonly id="root"). React handles routing, state management, and rendering views within this container.
-
-#### Virtual DOM:
+### Virtual DOM:
 
 React uses a Virtual DOM, which is an in-memory representation of the actual DOM. Whenever the state or props change in the app, React renders the necessary components to the Virtual DOM first.
 
-#### Reconciliation:
+### Reconciliation:
 
 React compares the updated Virtual DOM with the previous one, determining what has actually changed. This process is called reconciliation.
 
-#### Efficient DOM Updates:
+### Efficient DOM Updates:
 
 After identifying the differences, React updates only the parts of the real DOM that have changed, ensuring minimal performance overhead. This prevents a full page reload, making interactions fast and efficient.
 
-#### Routing in SPAs:
+## Routing in SPAs:
 
 Even though you're technically on the same page, libraries like React Router allow for the simulation of navigation between different "pages" or views. The URL may change, but the actual page doesn't reload; React simply renders the appropriate components for that route.
 
-#### Basic Components
+## Basic Components
 
 `BrowserRouter`: This component should wrap your entire application and is responsible for providing routing functionality. It uses the HTML5 History API to keep the UI in sync with the URL.
 
@@ -102,14 +95,15 @@ export default App;
 
 ### Using link
 
-`Link`: This is a component used for navigation. It creates an anchor tag (<a>) that, when clicked, changes the URL without causing a full page reload.
+`Link`: This is a component used for navigation. It creates an anchor tag `(<a>)` that, when clicked, changes the URL without causing a full page reload.
+
 it is designed to work in our project only, if we want to add external links we have to use anchor tags `<a href="some where outside">`.
 
 ```js
 <Link to="/">Home</Link>
 <Link to="/about">About</Link>
 <Link to="/contact">Contact</Link>
-<a href="www.com">
+<a href="www.hooshmandlab.com">
 ```
 
 #### Active Links:
@@ -118,11 +112,10 @@ React Router also provides a way to style links as "active" when they match the 
 
 ```js
 import { NavLink } from "react-router-dom";
-
 <NavLink to="/about" activeClassName="active-link"></NavLink>;
 ```
 
-### Nested Route
+## Nested Route
 
 in the below custom routes, we have `</HomeLayOut>` as parent component and other components as child component.
 
@@ -169,11 +162,11 @@ const customRouter = createBrowserRouter([
 ]);
 ```
 
-#### Note:
+## Note:
 
 error component will not be included in the styles we are setting for outlet, Hence we need to set the styles separately.
 
-### Outlet
+## Outlet
 
 The "outlet" itself is typically represented by a special component that acts as a placeholder for the content of child routes. This component is where the content for each route gets injected.
 share the UI present in the `HomeLayout` to every child of the `HomeLayout` which we have provided in `HomeLayout` children.
@@ -188,7 +181,6 @@ const HomeLayOut = () => {
 			<main>
 				<Outlet></Outlet>
 			</main>
-
 			<footer></footer>
 		</div>
 	);
@@ -196,36 +188,22 @@ const HomeLayOut = () => {
 export default HomeLayOut;
 ```
 
-#### Styled Components
-
-```js
-import styled from "styled-components";
-const StyledBtn = styled.button`
-	background: red;
-	font-size: 3rem;
-	color: white;
-`;
-```
-
-```js
-const HomeLayOut = () => {
-	return (
-		<div>
-			<StyledBtn>Home</StyledBtn>
-		</div>
-	);
-};
-```
-
 ## Centering the elements
 
 If you want center a few elements, put them in a div and use either flex or grid layout to put them all together beautifully in the center.
 
-#### Fetching data
+## Fetching data
 
 general setup for fetching external data.
 
+````js
+
 ```js
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
+const URL = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
+````
+
+```jsx
 const fetchingData = async () => {
 	try {
 		const response = await axios.get(url);
