@@ -1,0 +1,40 @@
+* {
+	padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+}
+
+.main {
+	padding: 4rem;
+	width: 90vw;
+	max-width: 1192px;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.btn-container {
+	margin-top: 4rem;
+}
+.btn {
+	padding: 0.2rem 0.5rem;
+	text-transform: capitalize;
+	background: rgb(132, 0, 0);
+	color: white;
+	letter-spacing: 3px;
+	font-size: 1.09rem;
+	transition: all linear 0.3s;
+	cursor: pointer;
+	border: transparent;
+}
+
+.btn:hover {
+	background: rgb(86, 0, 0);
+}
+
+.value {
+	padding: 0.2rem 0.7rem;
+	margin: 0 1rem;
+	background: black;
+	font-size: 1.2rem;
+	color: white;
+}
