@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.container {
+	width: 90vw;
+	max-width: 786px;
+	padding: 3rem;
+	margin: 4rem auto;
+	background: gray;
+}
+
+.btn {
+	background-color: rgb(176, 2, 2);
+	padding: 0.3rem 0.8rem;
+	border-radius: 6px;
+	color: rgb(255, 255, 255);
+	margin-top: 2rem;
+}
+
+.memo-container {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
