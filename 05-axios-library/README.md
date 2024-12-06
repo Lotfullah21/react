@@ -6,11 +6,12 @@ It's often used for fetching data from APIs, submitting form data, or sending da
 ## Key Features:
 
 - Promise-Based: Axios uses promises, which allows for easier management of asynchronous requests and handling of responses and errors.
-  Browser and Node.js Support: Axios works in both the browser and Node.js environments, making it versatile for different types of applications.
+  Browser and Node.js
+- Support: Axios works in both the browser and Node.js environments, making it versatile for different types of applications.
 - Automatic Data Transformation: It automatically converts JSON data to JavaScript objects when receiving responses and can send data in various formats, including JSON and URL-encoded form data.
 - Interceptors: Axios allows you to intercept and modify requests or responses before they are handled, which is useful for adding headers, logging, or handling errors globally.
 - Cancel Requests: You can cancel ongoing requests using a CancelToken.
-  Timeouts: You can set time limits on requests, after which they will be automatically aborted.
+- Timeouts: You can set time limits on requests, after which they will be automatically aborted.
 
 ### Common Use Cases:
 
