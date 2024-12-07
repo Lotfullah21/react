@@ -1,5 +1,6 @@
-our main point in this lesson is to optimize our application, in fact we don't want our component to be re-rendered unnecessary.
-in the snippet below, every time we re-render our app, this function would be created from scratch every time state get updated, which we don't to happen.
+Our main point in this lesson is to optimize our application. We don't want our component to be re-rendered unnecessarily.
+in the snippet below, every time we re-render our app. This function would be created from scratch every time the state gets updated.
+
 
 ```js
 const removeCollege = (id) => {
@@ -14,24 +15,23 @@ import List from "./List";
 import Counter from "./Counter";
 import universities from "../data/Data";
 const Colleges = () => {
-	const [data, setData] = useState(universities);
-	// function that causes re-rendering.
-	const removeCollege = (id) => {
-		const newCollege = data.filter((college) => college.id !== id);
-		setData(newCollege);
-	};
-	return (
-		<div>
-			<Counter></Counter>
-			<List colleges={data} removeCollege={removeCollege}></List>
-		</div>
-	);
+const [data, setData] = useState(universities);
+// function that causes re-rendering.
+const removeCollege = (id) => {
+const newCollege = data.filter((college) => college.id !== id);
+setData(newCollege);
+};
+return (
+<div><Counter></Counter>
+<List colleges={data} removeCollege={removeCollege}></List>
+</div>
+);
 };
 export default Colleges;
 ```
 
-what is the solution ?
-useCallback hook to the rescue.
+#### What is the solution ?
+`useCallback` hook to the rescue.
 
 ### what is useCallback hook?
 
@@ -39,7 +39,7 @@ In React, the useCallback hook is used to memoize functions, which can be partic
 
 ## Arguments:
 
-It takes two arguments, first one is the function to be memoized and the 2nd one is a dependency array which dictates the callback when to re-create the function from scratch.
+It takes two arguments, first one is the `function to be memoized` and the 2nd one is a `dependency array` which dictates the callback when to re-create the function from scratch.
 it is important to add, otherwise the functionality will no work properly.
 if dependency array is empty, the function will be re-created only once.
 
@@ -74,6 +74,9 @@ By memoizing the removeCollege function with useCallback, we ensure that it reta
 Common use cases for useCallback include:
 
 - Preventing unnecessary renders of memoized components (e.g., using React.memo).
-- Avoiding infinite loops in useEffect dependencies by memoizing functions used as effect callbacks.
+
+## Crucial 
+	- Avoiding infinite loops in useEffect dependencies by memoizing functions used as effect callbacks.
+
 - Optimizing performance when passing callback props to child components.
 - Keep in mind that while useCallback can be helpful for performance optimization, it's important not to overuse it. Only memoize functions when you have a specific performance concern, as it can make your code harder to read and understand if used excessively.
